@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root  'products#index'
   get 'products' => 'products#index'
   get   'products/new'  =>  'products#new'       #商品投稿画面表示
   post  'products'      =>  'products#create'       #投稿実装

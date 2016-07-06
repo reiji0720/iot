@@ -1,9 +1,9 @@
 <div class="contents row">
-  <%= form_tag('/tweets', method: :post) do %>
+  <%= form_tag('/products', method: :post) do %>
     <h3>
       投稿する
     </h3>
-    <input placeholder="title" type="text" name="name"><br>
+    <input placeholder="title" type="text" name="title"><br>
     <input placeholder="Image Url" type="text" name="image"><br>
     <textarea cols="30" name="ex" placeholder="ex" rows="10"></textarea><br>
     <select name="price">
@@ -14,11 +14,11 @@
 <option value="1000円">1000円</option>
 </select><br>
 <select name="category">
- <option value="">---</option>
-<option value="2円">2円</option>
-<option value="20円">20円</option>
-<option value="200円">200円</option>
-<option value="2000円">2000円</option>
+ <option value="0">---</option>
+<option value="1">2円</option>
+<option value="2">20円</option>
+<option value="3">200円</option>
+<option value="4">2000円</option>
 </select><br>
  <input placeholder="scene" type="text" name="scene"><br>
  <input placeholder="detail" type="text" name="detail"><br>
