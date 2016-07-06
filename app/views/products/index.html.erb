@@ -10,7 +10,16 @@
         </div>
       <% end %>
       <br>
+
 <% @products.each do |product| %>
+<div style="width:300px;border:1px solid #eee;margin-bottom:5px;">
+<% if user_signed_in? && current_user.id == product.user_id %>
+<%= link_to '編集', "/products/#{product.id}/edit", method: :get %>
+ <%= link_to '削除', "/products/#{product.id}", method: :delete %>
+ <% end %>
     <p><%= product.title %></p>
+    <p><%= product.ex %></p>
+    </div>
   <% end %>
+
   <%= paginate(@products) %>

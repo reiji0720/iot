@@ -1,0 +1,33 @@
+<div class="contents row">
+    <%= form_tag("/products/#{@product.id}", method: :patch ) do %>
+      <h3>
+        編集する
+      </h3>
+      <input placeholder="title" type="text" name="title" value="<%= @product.title %>"><br>
+    <input placeholder="Image Url" type="text" name="image" value="<%= @product.image %>"><br>
+    <textarea cols="30" name="ex" placeholder="ex" rows="10">
+      <%= @product.ex %>
+    </textarea><br>
+     現在の選択<%= @product.price %>
+    <select name="price">
+ <option value="">---</option>
+<option value="1円">1円</option>
+<option value="10円">10円</option>
+<option value="100円">100円</option>
+<option value="1000円">1000円</option>
+</select><br>
+現在の選択<%= @product.category %>
+<select name="category">
+ <option value="0">---</option>
+<option value="1">2円</option>
+<option value="2">20円</option>
+<option value="3">200円</option>
+<option value="4">2000円</option>
+</select><br>
+ <input placeholder="scene" type="text" name="scene" value="<%= @product.scene %>"><br>
+ <input placeholder="detail" type="text" name="detail" value="<%= @product.detail %>"><br>
+ <input placeholder="company" type="text" name="company" value="<%= @product.company %>"><br>
+ <input placeholder="url" type="text" name="url" value="<%= @product.url %>"><br>
+    <input type="submit" value="SENT">
+    <% end %>
+  </div>
