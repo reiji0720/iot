@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root  'products#index'
-  get 'products' => 'products#index'
-  get   'products/new'  =>  'products#new'       #商品投稿画面表示
-  post  'products'      =>  'products#create'       #投稿実装
-  get   'users/:id'   =>  'users#show'    #Mypageへのルーティング
-  delete  'products/:id'  => 'products#destroy' #商品の削除
-  get   'products/:id/edit'  => 'products#edit' #商品の編集
-  patch   'products/:id'  => 'products#update'
+  resources :products do
+    resources :comments, only: [:create]
+  end
+  resources :users, only: [:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

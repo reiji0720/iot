@@ -9,7 +9,7 @@
 <body>
 <% if user_signed_in? %>
         <div class="user_nav grid-6">
-          <span><%= current_user.nickname %>
+          <span><%= current_user.nickname %>さんようこそ！
             <ul class="user__info">
               <li>
                 <a href="/users/<%= current_user.id %>">マイページ</a>

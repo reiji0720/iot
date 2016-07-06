@@ -1,0 +1,26 @@
+--------詳細--------
+    <%= simple_format(@product.title) %>
+    <%= simple_format(@product.ex) %>
+    <%= simple_format(@product.company) %>
+    <%= simple_format(@product.price) %>
+    <%= @product.category %>
+    <%= simple_format(@product.scene) %>
+    <%= simple_format(@product.detail) %>
+    <%= simple_format(@product.url) %>
+    --------詳細--------
+    <% if current_user %>
+      <%= form_tag("/products/#{@product.id}/comments", method: :post) do %>
+        <textarea cols="30" name="review" placeholder="コメントする" rows="2"></textarea>
+        <input type="submit" value="SENT">
+      <% end %>
+    <% end %>
+
+    <h4>＜コメント一覧＞</h4>
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <p>
+            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
+            <%= comment.review %>
+          </p>
+        <% end %>
+      <% end %>
