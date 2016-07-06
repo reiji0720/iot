@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
 
     def show
     @product = Product.find(params[:id])
-    @comments = @product.comments.includes(:user)
+    @comments = @product.comments.includes(:user).order("created_at DESC")
   end
 
      def edit

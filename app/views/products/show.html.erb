@@ -10,17 +10,27 @@
     --------詳細--------
     <% if current_user %>
       <%= form_tag("/products/#{@product.id}/comments", method: :post) do %>
+      <label>評価: </label>
+   <select name="rate">
+   <option value="">---</option>
+   <option value="0">0</option>
+<option value="2">1</option>
+<option value="4">2</option>
+<option value="6">3</option>
+<option value="8">4</option>
+<option value="10">5</option>
+  </select><br>
         <textarea cols="30" name="review" placeholder="コメントする" rows="2"></textarea>
         <input type="submit" value="SENT">
       <% end %>
     <% end %>
 
-    <h4>＜コメント一覧＞</h4>
+    <h4>＜レビュー一覧＞</h4>
       <% if @comments %>
         <% @comments.each do |comment| %>
           <p>
             <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-            <%= comment.review %>
+            <%= comment.review %>→評価<%= comment.rate %>
           </p>
         <% end %>
       <% end %>

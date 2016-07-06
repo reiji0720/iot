@@ -12,16 +12,25 @@
       <br>
 
 <% @products.each do |product| %>
+<a href="/products/<%= product.id %>">
 <div style="width:300px;border:1px solid #eee;margin-bottom:5px;">
 <% if user_signed_in? && current_user.id == product.user_id %>
-
-
  <% end %>
- <a href="/products/<%= product.id %>">詳細へ飛べるよ〜</a>
+ 
 
     <p><%= product.title %></p>
     <p><%= product.ex %></p>
+    <% if product.comments.present? %>
+    <p>評価の平均点→<% ave = product.comments.average(:rate) %><%= (ave/2).round(1) %></p>
+    <p>星表示要員→<%= ave.round %></p>
+    <% else %>
+    評価なし
+    <% end %>
+    <p>レビューの件数→</p>
     </div>
+</a>
   <% end %>
 
   <%= paginate(@products) %>
+
+  <h1>評価ランキング</h1>

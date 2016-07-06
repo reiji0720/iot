@@ -1,9 +1,8 @@
 <div class="contents row" >
     <p><%= @nickname %>さんの投稿一覧（マイページ）</p>
 
-
-
     <% @products.each do |product| %>
+    <div style="width:300px;border:1px solid #eee;margin-bottom:5px;">
       <div class="content_post" style="background-image: url(<%= product.image %>);">
         <%= simple_format(product.title) %>
         <% if user_signed_in? && product.user_id == current_user.id %>
@@ -11,6 +10,22 @@
         <%= link_to '削除', "/products/#{product.id}", method: :delete %>
         <% end %>
       </div>
+    </div>
+    <% end %>
+    <%= paginate(@products) %>
+<br>
+    <br>
+    <p><%= @nickname %>さんのレビュー一覧（マイページ）</p>
+    <% @comments.each do |comment| %>
+    <div style="width:300px;border:1px solid #eee;margin-bottom:5px;">
+      <div class="content_post">
+        <%= simple_format(comment.review) %>→評価:<%= comment.rate %>
+        <% if user_signed_in? && comment.user_id == current_user.id %>
+        <%= link_to '編集', "/products/#{comment.product.id}/comments/#{comment.id}/edit", method: :get %>
+        <%= link_to '削除', "/products/#{comment.product.id}/comments/#{comment.id}", method: :delete %>
+        <% end %>
+      </div>
+    </div>
     <% end %>
     <%= paginate(@products) %>
   </div>
