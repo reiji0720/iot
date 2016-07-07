@@ -28,7 +28,7 @@
 <div id="popmenu5"><div class="review-face-hed"><%= image_tag current_user.avatar %></div><div id="login-area"><%= current_user.nickname %>さん</div><div style="display:none">
 <div id="cont5">
  <ul class="menu-login">
- <li><a href="/users/<%= current_user.id %>"><div class="log-li">マイページ</div></a></li>
+ <li><a href="/users/<%= current_user.id %>"><div class="log-li">レビュー一覧</div></a></li>
 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete,:class => "log-li" %></li>
  </ul>
 </div><!-- cont5 -->
@@ -63,13 +63,6 @@
                         <li><a href="">その他（2）</a></li>
                 </ul>
             <div id="main">
-<!-- ここからまだいじってない -->
-
-<h3>ランキング（レビュー数）</h3>
-          <% @ranking.each.with_index(1) do |product, i| %>
-          <p><a href="/products/<%= product.id %>"><%= i %>位→<%= product.title %></a></p>
-          <% end %>
-
 
 
 <%= yield %>
@@ -79,13 +72,13 @@
               <div id="sidebar">
                 <h3>IoT総合ランキング</h3>
                 <ul class="ranking">
-                  <li class="clearfix"><a href=""><div class="rank rank1">1</div><div class="rank-right"><h5>アケルンベータ版</h5><div class="side-photo"><img src="img/ake.png"></div><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
-                    <li class="clearfix"><a href=""><div class="rank rank2">2</div><div class="rank-right"><h5>アケルンベータ版</h5><div class="side-photo"><img src="img/item2.png"></div><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
-                    <li class="clearfix"><a href=""><div class="rank rank3">3</div><div class="rank-right"><h5>アケルンベータ版</h5><div class="side-photo"><img src="img/item5.jpg"></div><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
-                </ul>
-                <ul class="ranking45">
-                <li class="clearfix"><a href=""><div class="rank45">4</div><div class="rank-right"><h5>アケルンベータ版</h5><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
-                   <li class="clearfix"><a href=""><div class="rank45">5</div><div class="rank-right"><h5>アケルンベータ版</h5><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
+                <% @ranking.each.with_index(1) do |product, i| %>
+                    <% if i<4 %>
+                  <li class="clearfix"><a href="/products/<%= product.id %>"><div class="rank rank<%= i %>"><%= i %></div><div class="rank-right"><h5><%= product.title %></h5><div class="side-photo"><img src="<%= product.itemphoto(:medium) %>"></div><span class="rate rate4-5"></span><span class="rate-count">(<%= product.comments.count %>)</span></div><!-- rank-right --></a></li>
+                  <% else %>
+                  <li class="clearfix"><a href="/products/<%= product.id %>"><div class="rank45 rank<%= i %>"><%= i %></div><div class="rank-right"><h5><%= product.title %></h5><span class="rate rate4-5"></span><span class="rate-count">(<%= product.comments.count %>)</span></div><!-- rank-right --></a></li>
+                    <% end %>
+                  <% end %>
                 </ul>
             </div><!-- sidebar -->
             <div class="clear"></div>

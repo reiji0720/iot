@@ -237,7 +237,7 @@ header{
 	}
 
 .item-photo img{
-	width:280px;
+	width:250px;
 	
  position: relative;
     top: 50%;
@@ -263,6 +263,47 @@ header{
 .pager {
     overflow: hidden;
 }
+.pagination span{
+font-size: 13px;
+    padding: 0.6em 0.9em;
+    border-radius: 1px;
+    background: #fff;
+    margin-right:7px;
+    border:1px solid #ddd;
+}
+.pagination span .current{
+
+}
+.pagenation a{
+
+    color: #000;
+    text-decoration: none;
+}
+.pagenation a:hover{
+    color: #fff;
+}
+.next a,.page a,.last a,.prev a,.first a{
+color:#333;
+}
+.current{
+background: none!important;
+color:#999;
+border:none !important;
+}
+.pagenation a{
+display: block;
+    font-size: 13px;
+    padding: 0.7em 0.9em;
+    border-radius: 1px;
+    color:#333;
+}
+.pagenation .current{
+color:#bbb;
+}
+.last a{
+	display: inline-block;
+padding-right:10px;
+}
 .order ul{
 	 list-style: none;
     position: relative;
@@ -273,7 +314,6 @@ header{
 .order ul li{
 	 margin: 0 2px;
     position: relative;
-    
     display:inline-block;
 	}
 .pager ul {
@@ -441,7 +481,7 @@ footer{
 	padding:8px 15px;
 	}
 .side-photo img{
-	height:90px;
+	width:150px;
 	}
 .rank-right{
 	width:150px;
@@ -449,6 +489,7 @@ footer{
 	}
 .side-photo{
 	width:150px;
+	height:90px;
 	overflow:hidden;
 	}
 .rank{
@@ -721,6 +762,10 @@ a #write{
 .main-photo img{
 	max-width:100%;
 	}
+.main-photo{
+height:400px;
+overflow: hidden;
+}
 .main-inner h2{
 	font-size:24px;
 	margin-bottom:10px;

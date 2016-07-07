@@ -1,22 +1,18 @@
+<div class="order clearfix">
+             <ul>
+             <li>評価が高い順</li> | <li><a href="">新着順</a></li>
+             </ul>
+             </div>
+                       <ul id="list">
+                       <% @products.each do |product| %>
+                       <li><a href="/products/<%= product.id %>"><h4><%= product.title %></h4><div class="item-photo"><img src="<%= product.itemphoto(:medium) %>" width="250"></div><div class="item-bottom"><a href="" class="tag-item">クラウド</a><p class="item-ex"><%= product.ex.truncate(35, separator: /\s/) %></p>
+<% if product.comments.present? %>
+                       <span class="rate rate4-5"><% ave = product.review_average %><%= (ave/2).round(1) %></span>
 
-<% @products.each do |product| %>
-<a href="/products/<%= product.id %>">
-<div style="width:300px;border:1px solid #eee;margin-bottom:5px;float:left;">
-<% if user_signed_in? && current_user.id == product.user_id %>
- <% end %>
-
-    <p><%= product.title %></p>
-    <img src="<%= product.itemphoto(:medium) %>" width="280">
-    <p><%= product.ex %></p>
-    <% if product.comments.present? %>
-    <p>評価の平均点→<% ave = product.review_average %><%= (ave/2).round(1) %></p>
-    <p>星表示要員→<%= ave.round %></p>
-    <% else %>
+                       <% else %>
     評価なし
     <% end %>
-    <p>レビューの件数→<%= product.comments.count %></p>
-    </div>
-</a>
-  <% end %>
-
+                       <span class="rate-count">(レビュー<%= product.comments.count %>件)</span></a></div></li>
+<% end %>
+                    </ul>
   <%= paginate(@products) %>

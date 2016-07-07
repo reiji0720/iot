@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :move_to_index, except: :index
 
     def index
-      @products = Product.includes(:user).order("created_at DESC").page(params[:page]).per(2)
+      @products = Product.includes(:user).order("created_at DESC").page(params[:page]).per(4)
     end
     def new
     end

@@ -1,14 +1,60 @@
---------詳細--------
-    <%= simple_format(@product.title) %>
-    <%= simple_format(@product.ex) %>
-    <%= simple_format(@product.company) %>
-    <%= simple_format(@product.price) %>
-    <%= @product.category %>
-    <%= simple_format(@product.scene) %>
-    <%= simple_format(@product.detail) %>
-    <%= simple_format(@product.url) %>
-    --------詳細--------
-    <% if current_user %>
+<div class="main-inner">
+<h2><%= simple_format(@product.title) %></h2>
+           <span class="rate rate4-5"></span><span class="rate-count">(<%= @product.comments.count %>)</span>　<a href="" class="tag-item">クラウド</a><a href="" class="tag-item"><%= @product.category %></a><span class="views">2453 views</span>
+           <br><br>
+           <div class="main-photo"><img src="<%= @product.itemphoto(:medium) %>"></div>
+           <p class="item-detail"><%= simple_format(@product.ex) %>
+</p><br><br>
+<h3 class="syousai-h3">詳細情報</h3>
+ <div class="info">
+<table cellspacing="0" cellpadding="0">
+
+<tbody>
+<tr>
+<td class="wd1">価格帯</td>
+<td><%= simple_format(@product.price) %></td>
+</tr>
+<tr>
+<td class="wd1">運営会社</td>
+<td><%= simple_format(@product.company) %></td>
+</tr>
+<tr>
+<td class="wd1">利用シーン</td>
+<td><%= simple_format(@product.scene) %></td>
+</tr>
+<tr>
+<td class="wd1">仕様</td>
+<td><%= simple_format(@product.detail) %></td>
+</tr>
+<tr>
+<td class="wd1">WEBサイトURL</td>
+<td><a href="<%= @product.url %>"><%= simple_format(@product.url) %></a></td>
+</tr>
+</table>
+
+<a href="<%= @product.url %>" target="_blank" class="item-url">サイトへ飛ぶ</a>
+
+</div><!-- info -->
+           </div><!-- main-inner -->
+           <br>
+ <div class="main-inner">
+ <h2>「<%= @product.title %>」へのレビュー一覧</h2>
+ <% if @comments.present? %>
+ <ul id="review">
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <li class="clearfix review-li">
+          <div class="review-face"><%= image_tag comment.user.avatar %></div><div class="review"><span class="rate rate4-5"></span><span class="rate-count"></span><p class="review-date"><%= comment.rate %> 2016.07.08 <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></p><p class="review-txt"><%= comment.review %></p></div>
+          </li>
+        <% end %>
+      <% end %>
+      </ul>
+<% else %><!-- 存在present? -->
+まだレビューが存在しません<br><br>
+<% end %><!-- 存在present? -->
+      <br>
+ <h2>レビューを書く</h2><br>
+  <% if current_user %>
       <%= form_tag("/products/#{@product.id}/comments", method: :post) do %>
       <label>評価: </label>
    <select name="rate">
@@ -19,18 +65,11 @@
 <option value="6">3</option>
 <option value="8">4</option>
 <option value="10">5</option>
-  </select><br>
-        <textarea cols="30" name="review" placeholder="コメントする" rows="2"></textarea>
-        <input type="submit" value="SENT">
+  </select><br><br>
+        <textarea name="review" class="wd-100"  cols="40" rows="7" placeholder="例）初心者にも使いやすいです。iphoneアプリも利用可能だったので、長く使っていこうと思います。"></textarea>
+        <input type="submit" value="レビューを書く" class="review-write">
       <% end %>
     <% end %>
 
-    <h4>＜レビュー一覧＞</h4>
-      <% if @comments %>
-        <% @comments.each do |comment| %>
-          <p>
-            <strong><%= link_to comment.user.nickname, "/users/#{comment.user_id}" %>：</strong>
-            <%= comment.review %>→評価<%= comment.rate %>
-          </p>
-        <% end %>
-      <% end %>
+
+      </div><!-- main-inner -->
