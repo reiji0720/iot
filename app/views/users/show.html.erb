@@ -2,9 +2,11 @@
     <p><%= @nickname %>さんの投稿一覧（マイページ）</p>
 
     <% @products.each do |product| %>
-    <div style="width:300px;border:1px solid #eee;margin-bottom:5px;">
+    <div style="width:300px;border:1px solid #eee;margin-bottom:5px;float:left;">
       <div class="content_post" style="background-image: url(<%= product.image %>);">
         <%= simple_format(product.title) %>
+        <%= image_tag(product.itemphoto, :width => "280") %>
+    <p><%= product.ex %></p>
         <% if user_signed_in? && product.user_id == current_user.id %>
         <%= link_to '編集', "/products/#{product.id}/edit", method: :get %>
         <%= link_to '削除', "/products/#{product.id}", method: :delete %>
@@ -13,6 +15,7 @@
     </div>
     <% end %>
     <%= paginate(@products) %>
+    <div style="clear:both;"></div>
 <br>
     <br>
     <p><%= @nickname %>さんのレビュー一覧（マイページ）</p>

@@ -1,5 +1,5 @@
 <div class="contents row">
-  <%= form_tag('/products', method: :post) do %>
+  <%= form_tag('/products',:multipart => true, method: :post) do %>
     <h3>
       投稿する
     </h3>
@@ -24,6 +24,7 @@
  <input placeholder="detail" type="text" name="detail"><br>
  <input placeholder="company" type="text" name="company"><br>
  <input placeholder="url" type="text" name="url"><br>
+ <input placeholder="url" type="file" name="itemphoto"><br>
     <input type="submit" value="SENT">
   <% end %>
 </div>

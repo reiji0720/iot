@@ -5,12 +5,21 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="google" value="notranslate">
+  <meta http-equiv="Content-Language" content="ja">
 </head>
 <body>
+
+<h3>ランキング（レビュー数）</h3>
+          <% @ranking.each.with_index(1) do |product, i| %>
+          <p><a href="/products/<%= product.id %>"><%= i %>位→<%= product.title %></a></p>
+          <% end %>
+
 <% if user_signed_in? %>
         <div class="user_nav grid-6">
           <a href="/">top</a>
           <span><%= current_user.nickname %>さんようこそ！
+          <%= image_tag current_user.avatar,:width => "100px" %>
             <ul class="user__info">
               <li>
                 <a href="/users/<%= current_user.id %>">マイページ</a>
