@@ -19,6 +19,7 @@
         <div class="user_nav grid-6">
           <a href="/">top</a>
           <span><%= current_user.nickname %>さんようこそ！
+          <%= image_tag current_user.avatar,:width => "100px" %>
             <ul class="user__info">
               <li>
                 <a href="/users/<%= current_user.id %>">マイページ</a>

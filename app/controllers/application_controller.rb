@@ -13,4 +13,13 @@ class ApplicationController < ActionController::Base
     product_ids = Comment.group(:product_id).order('count_product_id DESC').limit(5).count(:product_id).keys
       @ranking = product_ids.map { |id| Product.find(id) }
   end
+
+#サインアウト後
+  def after_sign_out_path_for(resource)
+      '/users/sign_in' # サインアウト後のリダイレクト先URL
+    end
+
+  def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up).push(:avatar)
+    end
 end
