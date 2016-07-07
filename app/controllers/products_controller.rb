@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     end
 
     def create
-      Product.create(title: product_params[:title],image: product_params[:image],ex: product_params[:ex],category: product_params[:category],price: product_params[:price],detail: product_params[:detail],company: product_params[:company],scene: product_params[:scene],url: product_params[:url],user_id: current_user.id)
+      Product.create(title: product_params[:title],image: product_params[:image],ex: product_params[:ex],category: product_params[:category],price: product_params[:price],detail: product_params[:detail],company: product_params[:company],scene: product_params[:scene],url: product_params[:url],itemphoto: product_params[:itemphoto],user_id: current_user.id)
     end
 
     def destroy
@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
 
     private
     def product_params
-      params.permit(:title, :image, :ex, :category, :price, :detail, :company, :scene, :url)
+      params.permit(:title, :image, :ex, :category, :price, :detail, :company, :scene, :url, :itemphoto)
     end
 
     def move_to_index

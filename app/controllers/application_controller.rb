@@ -7,4 +7,10 @@ class ApplicationController < ActionController::Base
     def configure_permitted_parameters
       devise_parameter_sanitizer.for(:sign_up) << :nickname
     end
+#ランキング
+    before_action :ranking
+  def ranking
+    product_ids = Comment.group(:product_id).order('count_product_id DESC').limit(5).count(:product_id).keys
+      @ranking = product_ids.map { |id| Product.find(id) }
+  end
 end
