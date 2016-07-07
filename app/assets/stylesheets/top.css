@@ -1,0 +1,20 @@
+﻿@charset "utf-8";
+
+#list li:first-child .item-photo{
+	width:100%;
+	height:auto;
+	max-height:300px;
+	float:none;
+	}
+#list li:first-child .item-right{
+	width:100%;
+	float:none;
+	background-color:#fff;
+	height:130px;
+	}
+#list li:first-child .item-photo img{
+	height:auto;
+	}
+#list li:first-child h4{
+	font-size:24px;
+}

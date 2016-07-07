@@ -1,42 +1,185 @@
 <!DOCTYPE html>
-<html>
 <head>
-  <title>Iot</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <meta charset="UTF-8">
+<title>未来百貨</title>
+<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <meta name="google" value="notranslate">
-  <meta http-equiv="Content-Language" content="ja">
+
 </head>
 <body>
+<header>
+<div id="hed-inner">
+<div id="hed-left">
+<div id="hed-top"><h1 class="hed-top-l">日本最大のIoTサービス・製品のレビューまとめサイト「未来百貨」</h1>
+<div class="clear"></div>
+</div><!-- hed-top -->
+<div id="logo-wrap"><a href="/"><%= image_tag 'logo.png',:class => "logo" %></a></div><!-- logo -->
+<div class="input-group">
+  <input type="text" class="form-control" placeholder="IoTを検索（製品・サービス）">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="submit">検索</button>
+  </span>
+</div><!-- input-group -->
+</div><!-- hed-left -->
+<div id="heder-right">
+<% if user_signed_in? %><!-- ログイン時 -->
+
+<div id="popmenu5"><div class="review-face-hed"><%= image_tag current_user.avatar %></div><div id="login-area"><%= current_user.nickname %>さん</div><div style="display:none">
+<div id="cont5">
+ <ul class="menu-login">
+ <li><a href="/users/<%= current_user.id %>"><div class="log-li">マイページ</div></a></li>
+<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete,:class => "log-li" %></li>
+ </ul>
+</div><!-- cont5 -->
+</div><!-- Modal5 --></div>
+<a class="post" href="/products/new"><div id="write">掲載する</div></a><!-- write -->
+
+<% else %><!-- そうでない場合 -->
+<ul class="log-right"><li><%= link_to "新規登録", new_user_registration_path, :class => 'post' %></li>|<li><%= link_to "ログイン", new_user_session_path %></li></ul>
+<a class="post" href="/products/new"><div id="write">掲載する</div></a><!-- write -->
+<% end %>
+</div><!-- hed-right -->
+<div class="clear"></div>
+
+</div><!-- hed-inner -->
+</header>
+<div id="contents-wrap">
+  <div id="contents">
+     <ul id="category">
+      <li>IoTカテゴリー：</li>
+                <li><a href="">IoT製品全般（92）</a></li>
+                       <li><a href="">ウェアラブル（43）</a></li>
+                        <li><a href="">コネクテッドカー（1）</a></li>
+                        <li><a href="">スマートホーム（45）</a></li>
+                        <li><a href="">スマートシティ（23）</a></li>
+                        <li><a href="">ドローン（5）</a></li>
+                        <li><a href="">ロボット（14）</a></li>
+                        <li><a href="">店舗・オフィス（12）</a></li>
+                        <li><a href="">人工知能（9）</a></li>
+                        <li><a href="">クラウド（3）</a></li>
+                        <li><a href="">ビッグデータ（5）</a></li>
+                        <li><a href="">農業（12）</a></li>
+                        <li><a href="">その他（2）</a></li>
+                </ul>
+            <div id="main">
+<!-- ここからまだいじってない -->
 
 <h3>ランキング（レビュー数）</h3>
           <% @ranking.each.with_index(1) do |product, i| %>
           <p><a href="/products/<%= product.id %>"><%= i %>位→<%= product.title %></a></p>
           <% end %>
 
-<% if user_signed_in? %>
-        <div class="user_nav grid-6">
-          <a href="/">top</a>
-          <span><%= current_user.nickname %>さんようこそ！
-          <%= image_tag current_user.avatar,:width => "100px" %>
-            <ul class="user__info">
-              <li>
-                <a href="/users/<%= current_user.id %>">マイページ</a>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-              </li>
-            </ul>
-          </span>
-          <a class="post" href="/products/new">投稿する</a>
-        </div>
-      <% else %>
-        <div class="grid-6">
-          <%= link_to "ログイン", new_user_session_path, :class => 'post' %>
-          <%= link_to "新規登録", new_user_registration_path, :class => 'post' %>
-        </div>
-      <% end %>
+
 
 <%= yield %>
 
+<br>
+</div><!-- main -->
+              <div id="sidebar">
+                <h3>IoT総合ランキング</h3>
+                <ul class="ranking">
+                  <li class="clearfix"><a href=""><div class="rank rank1">1</div><div class="rank-right"><h5>アケルンベータ版</h5><div class="side-photo"><img src="img/ake.png"></div><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
+                    <li class="clearfix"><a href=""><div class="rank rank2">2</div><div class="rank-right"><h5>アケルンベータ版</h5><div class="side-photo"><img src="img/item2.png"></div><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
+                    <li class="clearfix"><a href=""><div class="rank rank3">3</div><div class="rank-right"><h5>アケルンベータ版</h5><div class="side-photo"><img src="img/item5.jpg"></div><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
+                </ul>
+                <ul class="ranking45">
+                <li class="clearfix"><a href=""><div class="rank45">4</div><div class="rank-right"><h5>アケルンベータ版</h5><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
+                   <li class="clearfix"><a href=""><div class="rank45">5</div><div class="rank-right"><h5>アケルンベータ版</h5><span class="rate rate4-5"></span><span class="rate-count">(6)</span></div><!-- rank-right --></a></li>
+                </ul>
+            </div><!-- sidebar -->
+            <div class="clear"></div>
+    </div><!-- contentes -->
+
+<div id="tag-wrap">
+<div class="tag">
+<h3>IoTタグの一覧</h3>
+<br>
+<a href=""><li>B2B (5)</li></a>
+<a href=""><li>C2C (21)</li></a>
+<a href=""><li>EC (4)</li></a>
+<a href=""><li>Q&amp;A (6)</li></a>
+<a href=""><li>SNS (10)</li></a>
+<a href=""><li>アイドル (1)</li></a>
+<a href=""><li>イベント (11)</li></a>
+<a href=""><li>インテリア (1)</li></a>
+<a href=""><li>エグゼクティブ (3)</li></a>
+<a href=""><li>キュレーション (17)</li></a>
+<a href=""><li>クラウド (16)</li></a>
+<a href=""><li>クラウドソーシング (11)</li></a>
+<a href=""><li>クラウドファンディング (3)</li></a>
+<a href=""><li>クーポン (2)</li></a>
+<a href=""><li>コーディネート (2)</li></a>
+<a href=""><li>シェア (5)</li></a>
+<a href=""><li>シェアハウス (1)</li></a>
+<a href=""><li>スタートアップ (17)</li></a>
+<a href=""><li>スペース (2)</li></a>
+<a href=""><li>チケット (1)</li></a>
+<a href=""><li>ノウハウ (5)</li></a>
+<a href=""><li>バイラルメディア (2)</li></a>
+<a href=""><li>ファッション (6)</li></a>
+<a href=""><li>マッチング (19)</li></a>
+<a href=""><li>ユーザテスト (4)</li></a>
+<a href=""><li>リサーチ (4)</li></a>
+</div><!-- tag -->
+</div><!-- tag-wrap -->
+
+            <footer>
+            <ul id="footer-menu">
+            <li><a href="">IoTとは？3分で分かるIoT</a></li>
+            <li><a href="">未来百貨とは</a></li>
+            <li><a href="">運営会社</a></li>
+            <li><a href="">取材等のお問合せ</a></li>
+            <li><a href="">広告掲載について</a></li>
+            </ul>
+            <p class="copy">(c)copyright <a href="">mirai100.jp</a></p>
+            </footer>
+    </div><!-- contents-wrap -->
+
+<div id="regi" class="modal">
+<h3 class="regi-ttl">無料会員登録</h3>
+<a href="" class="regi-sns">Facebookで新規登録</a>
+<p><span>または</span></p>
+<a href="" class="regi-mail">メールアドレスで新規登録</a>
+<br>
+<p><a href="" target="_blank">利用規約</a>に同意して、登録します。</p>
+</div><!-- regi -->
+<div id="login" class="modal">
+<h3 class="regi-ttl">ログイン</h3>
+<a href="" class="regi-sns">Facebookでログイン</a>
+<p><span>または</span></p>
+<%= link_to "メールアドレスでログイン", new_user_session_path, :class => "regi-mail" %>
+
+</div><!-- login -->
+
+<div id="head-regi" class="modal">
+<h3 class="regi-ttl">ログイン</h3>
+<a href="" class="regi-sns">Facebookでログイン</a>
+<p><span>または</span></p>
+<%= link_to "メールアドレスでログイン", new_user_session_path, :class => "regi-mail" %>
+</div><!-- house-regi -->
+<script>
+$(function(){
+ //popModal
+ $('#popmenu5').click(function(){
+  $('#popmenu5').popModal({
+      html : $('#cont5'),
+      placement : 'bottomLeft',
+      showCloseBut : false,
+      onDocumentClickClose : true,
+      onDocumentClickClosePrevent : '',
+      overflowContent : false,
+      inline : true,
+      beforeLoadingContent : 'Please, waiting...',
+      onOkBut : function() {},
+      onCancelBut : function() {},
+      onLoad : function() {},
+      onClose : function() {}
+  });
+ });
+
+});
+</script>
+<script src="assets/jquery.darktooltip.js"></script>
 </body>
 </html>
