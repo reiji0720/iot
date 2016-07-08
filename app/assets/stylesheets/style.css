@@ -222,9 +222,10 @@ header{
 	}
 #list li h4{
 	font-weight:bold;
-	font-size:18px;
+	font-size:17px;
 	padding:0px 10px 5px 0px;
 	padding:10px 15px;
+  height:55px;
 	}
 .item-photo{
 	width:240px;
@@ -253,6 +254,7 @@ header{
 	font-size:12px;
 	padding:5px 0px 5px 0px;
 	margin-top:5px;
+  height:55px;
 	}
 .copy{
 	color:#bbb;
@@ -399,10 +401,11 @@ footer{
 .rate {
   position: relative;
   display: inline-block;
-  width: 80px;
+  width: 105px;
   height: 16px;
   font-size: 16px;
   margin-top:10px;
+  padding-left:85px;
 }
 .rate:before, .rate:after {
   position: absolute;
@@ -422,44 +425,75 @@ footer{
   overflow: hidden;
   white-space: nowrap;
 }
+/* レーティングサイド */
+.rate-side {
+  position: relative;
+  display: inline-block;
+  width: 105px;
+  height: 16px;
+  font-size: 14px;
+  margin-top:10px;
+  padding-left:80px;
+}
+.rate-side:before, .rate-side:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '★★★★★';
+  display: inline-block;
+  height: 16px;
+  line-height: 16px;
+  margin-top:2px;
+}
+.rate-side:before {
+  color: #eee;
+}
+.rate-side:after {
+  color: #eacc00;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 .rate0:after {
   width: 0;
 }
-
 .rate1:after {
-  width: 16px;
-}
-
-.rate1-5:after {
-  width: 24px;
+  width: 8px;
 }
 
 .rate2:after {
-  width: 32px;
-}
-
-.rate2-5:after {
-  width: 40px;
+  width: 16px;
 }
 
 .rate3:after {
-  width: 48px;
-}
-
-.rate3-5:after {
-  width: 56px;
+  width: 24px;
 }
 
 .rate4:after {
-  width: 64px;
-}
-
-.rate4-5:after {
-  width: 72px;
+  width: 32px;
 }
 
 .rate5:after {
+  width: 40px;
+}
+
+.rate6:after {
+  width: 48px;
+}
+
+.rate7:after {
+  width: 56px;
+}
+
+.rate8:after {
+  width: 64px;
+}
+
+.rate9:after {
+  width: 72px;
+}
+
+.rate10:after {
   width: 80px;
 }
 .rate-count{

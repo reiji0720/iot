@@ -1,8 +1,14 @@
 <div class="main-inner">
 <h2><%= simple_format(@product.title) %></h2>
-           <span class="rate rate4-5"></span><span class="rate-count">(<%= @product.comments.count %>)</span>　<a href="" class="tag-item">クラウド</a><a href="" class="tag-item"><%= @product.category %></a><span class="views">2453 views</span>
+<% if @product.review_average.present? %>
+<% ave1 = @product.review_average %>
+<% else %><!-- 存在present? -->
+<% ave1 = 0 %>
+<% end %><!-- 存在present? -->
+
+           <span class="rate rate<%= ave1.round %>"><%= (ave1/2).round(1) %></span><span class="rate-count">(<%= @product.comments.count %>)</span>　<a href="" class="tag-item">クラウド</a><a href="" class="tag-item"><%= @product.category %></a><span class="views">2453 views</span>
            <br><br>
-           <div class="main-photo"><img src="<%= @product.itemphoto(:medium) %>"></div>
+           <div class="main-photo"><%= image_tag @product.itemphoto(:medium) %></div>
            <p class="item-detail"><%= simple_format(@product.ex) %>
 </p><br><br>
 <h3 class="syousai-h3">詳細情報</h3>
@@ -44,7 +50,9 @@
       <% if @comments %>
         <% @comments.each do |comment| %>
           <li class="clearfix review-li">
-          <div class="review-face"><%= image_tag comment.user.avatar %></div><div class="review"><span class="rate rate4-5"></span><span class="rate-count"></span><p class="review-date"><%= comment.rate %> 2016.07.08 <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></p><p class="review-txt"><%= comment.review %></p></div>
+          <div class="review-face"><%= image_tag comment.user.avatar(:thumb) %></div><div class="review"><% if comment.rate.present? %><% ave = comment.rate %><% else %><!-- 存在present? -->
+<% ave = 0 %>
+<% end %><span class="rate rate<%= ave.round %>"></span><span class="rate-count"></span><p class="review-date"><%= comment.rate %> 2016.07.08 <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></p><p class="review-txt"><%= comment.review %></p></div>
           </li>
         <% end %>
       <% end %>

@@ -1,32 +1,55 @@
 <div class="main-inner">
 <div class="contents row">
-  <%= form_tag('/products',:multipart => true, method: :post) do %>
-    <h3>
-      投稿する
-    </h3>
-    <input placeholder="title" type="text" name="title"><br>
-    <input placeholder="Image Url" type="text" name="image"><br>
-    <textarea cols="30" name="ex" placeholder="ex" rows="10"></textarea><br>
-    <select name="price">
- <option value="">---</option>
-<option value="1円">1円</option>
-<option value="10円">10円</option>
-<option value="100円">100円</option>
-<option value="1000円">1000円</option>
-</select><br>
+  <%= form_tag('/products',:multipart => true,:id => "review-w", method: :post) do %>
+  <div class="st-la">
+    <h2>新規商品掲載</h2><br>
+    <label>商品名・サービスタイトル: </label>
+    <input placeholder="例）IoT鍵自動開閉アプリ「ABC」" type="text" name="title" class="wd-middle"><br>
+    <label>商品説明: </label>
+    <textarea cols="30" name="ex" placeholder="商品説明を入力" class="wd-100" rows="10"></textarea><br>
+
+    <label>商品画像: </label>
+       <input type="file" name="itemphoto"><br>
+    <label>製品価格（税込）: </label>
+    <input placeholder="数字のみご記入ください" type="text" name="title" class="wd-mini">  円<br>
+    <label>月額利用価格（税込）: </label>
+    <input placeholder="数字のみご記入ください" type="text" name="title" class="wd-mini">  円<br>
+<label>カテゴリの選択: </label>
 <select name="category">
  <option value="0">---</option>
-<option value="1">2円</option>
-<option value="2">20円</option>
-<option value="3">200円</option>
-<option value="4">2000円</option>
-</select><br>
- <input placeholder="scene" type="text" name="scene"><br>
- <input placeholder="detail" type="text" name="detail"><br>
- <input placeholder="company" type="text" name="company"><br>
- <input placeholder="url" type="text" name="url"><br>
- <input placeholder="url" type="file" name="itemphoto"><br>
-    <input type="submit" value="SENT">
+<option value="1">IoT製品全般</option>
+<option value="2">ウェアラブル</option>
+<option value="3">コネクテッドカー</option>
+<option value="4">スマートホーム</option>
+<option value="5">スマートシティ</option>
+<option value="6">ドローン</option>
+<option value="7">ロボット</option>
+<option value="8">店舗・オフィス</option>
+<option value="9">人工知能</option>
+<option value="10">クラウド</option>
+<option value="11">ビッグデータ</option>
+<option value="12">農業</option>
+<option value="13">センサー</option>
+<option value="14">その他のIoT</option>
+</select><br><br>
+<label>利用シーン: </label>
+ <textarea  type="text" name="scene" class="wd-100"  cols="40" rows="7" placeholder="例）鍵を遠隔で閉めたい時に、airbnbでの利用" /></textarea>
+ <label>仕様: </label>
+ <textarea  type="text" name="detail" class="wd-100"  cols="40" rows="7" placeholder="例）液晶サイズ：11.6インチ CPU：Pentium N3700(Braswell)/1.6GHz/4コア SSD容量：128GB メモリ容量：4GB OS：Windows 10 Home 64bit" /></textarea>
+<label>販売会社: </label>
+<input  placeholder="例）株式会社ABC" type="password" name="company" class="wd-middle"/><br>
+ <label>WEBサイトURL: </label>
+ <input  placeholder="例）http://www.yahoo.co.jp/" type="password" name="url" class="wd-middle"/><br>
+
+
+                <div class="post-button"><button name="button" type="submit">商品登録する</button></div>
+
+                <div class="clear"></div>
   <% end %>
+  </div><!-- st-la -->
 </div>
+
+
+
+
   </div><!-- main-inner -->

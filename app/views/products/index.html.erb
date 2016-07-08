@@ -5,14 +5,14 @@
              </div>
                        <ul id="list">
                        <% @products.each do |product| %>
-                       <li><a href="/products/<%= product.id %>"><h4><%= product.title %></h4><div class="item-photo"><img src="<%= product.itemphoto(:medium) %>" width="250"></div><div class="item-bottom"><a href="" class="tag-item">クラウド</a><p class="item-ex"><%= product.ex.truncate(35, separator: /\s/) %></p>
+                       <li><a href="/products/<%= product.id %>"><h4><%= product.title.truncate(24, separator: /\s/) %></h4><div class="item-photo"><%= image_tag product.itemphoto(:medium) %></div><div class="item-bottom"><a href="" class="tag-item">クラウド</a><p class="item-ex"><%= product.ex.truncate(50, separator: /\s/) %></p>
 <% if product.comments.present? %>
-                       <span class="rate rate4-5"><% ave = product.review_average %><%= (ave/2).round(1) %></span>
+                       <% ave = product.review_average %><span class="rate rate<%= ave.round %>"><%= (ave/2).round(1) %></span>
 
                        <% else %>
-    評価なし
+    <span class="rate rate0">0.0</span>
     <% end %>
-                       <span class="rate-count">(レビュー<%= product.comments.count %>件)</span></a></div></li>
+                       <span class="rate-count">(<%= product.comments.count %>件)</span></a></div></li>
 <% end %>
                     </ul>
   <%= paginate(@products) %>
