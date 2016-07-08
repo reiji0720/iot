@@ -28,19 +28,20 @@
 <div id="popmenu5"><div class="review-face-hed"><%= image_tag current_user.avatar(:thumb) %></div><div id="login-area"><%= current_user.nickname %>さん</div><div style="display:none">
 <div id="cont5">
  <ul class="menu-login">
- <li><a href="/users/<%= current_user.id %>"><div class="log-li">レビュー一覧</div></a></li>
+ <li><a href="/users/<%= current_user.id %>"><div class="log-li">マイページ</div></a></li>
+ <li><a href="/users/edit"><div class="log-li">アカウント設定</div></a></li>
 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete,:class => "log-li" %></li>
  </ul>
 </div><!-- cont5 -->
 </div><!-- Modal5 --></div>
-<% if(current_user.id!=2) %>
+
 <a class="post" href="/products/new"><div id="write">掲載する</div></a><!-- write -->
-<% end %><!-- ユーザーid4が悪質なので投稿させません -->
+
 <% else %><!-- そうでない場合 -->
 <ul class="log-right"><li><%= link_to "新規登録", new_user_registration_path, :class => 'post' %></li>|<li><%= link_to "ログイン", new_user_session_path %></li></ul>
-<% if(current_user.id!=2) %>
+
 <a class="post" href="/products/new"><div id="write">掲載する</div></a><!-- write -->
-<% end %><!-- ユーザーid4が悪質なので投稿させません -->
+
 <% end %>
 </div><!-- hed-right -->
 <div class="clear"></div>

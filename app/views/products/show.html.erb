@@ -69,6 +69,7 @@
 <% end %><!-- 存在present? -->
       <br>
  <h2>レビューを書く</h2><br>
+ <% if user_signed_in? %><!-- ログイン時 -->
   <% if current_user %>
       <%= form_tag("/products/#{@product.id}/comments", method: :post) do %>
       <label>評価: </label>
@@ -85,6 +86,9 @@
         <input type="submit" value="レビューを書く" class="review-write">
       <% end %>
     <% end %>
+     <% else %><!-- そうでない場合 -->
+      レビューするためには<%= link_to "新規登録", new_user_registration_path, :class => 'post' %>ください
+      <% end %>
 
 
       </div><!-- main-inner -->

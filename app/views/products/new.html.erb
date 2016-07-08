@@ -1,5 +1,6 @@
   <div class="main-inner">
 <div class="contents row">
+<% if user_signed_in? %><!-- ログイン時 -->
   <%= form_tag('/products',:multipart => true,:id => "review-w", method: :post) do %>
   <div class="st-la">
     <h2>新規商品掲載</h2><br>
@@ -47,6 +48,9 @@
                 <div class="clear"></div>
   <% end %>
   </div><!-- st-la -->
+  <% else %><!-- そうでない場合 -->
+      商品を掲載するためには<%= link_to "ユーザー新規登録", new_user_registration_path, :class => 'post' %>ください
+      <% end %>
 </div>
 
 

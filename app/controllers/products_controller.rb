@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :move_to_index, except: :index
-  before_action :authenticate_user!, only: :search
+#before_action :move_to_index, except: :index
+
 impressionist actions: [:show]
     def index
       @products = Product.includes(:user).order("created_at DESC").page(params[:page]).per(9)
