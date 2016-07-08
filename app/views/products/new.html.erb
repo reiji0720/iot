@@ -1,4 +1,4 @@
-<div class="main-inner">
+  <div class="main-inner">
 <div class="contents row">
   <%= form_tag('/products',:multipart => true,:id => "review-w", method: :post) do %>
   <div class="st-la">
@@ -11,9 +11,9 @@
     <label>商品画像: </label>
        <input type="file" name="itemphoto"><br>
     <label>製品価格（税込）: </label>
-    <input placeholder="数字のみご記入ください" type="text" name="title" class="wd-mini">  円<br>
+    <input placeholder="数字のみご記入ください" type="text" name="price1" class="wd-mini">  円<br>
     <label>月額利用価格（税込）: </label>
-    <input placeholder="数字のみご記入ください" type="text" name="title" class="wd-mini">  円<br>
+    <input placeholder="数字のみご記入ください" type="text" name="price2" class="wd-mini">  円<br>
 <label>カテゴリの選択: </label>
 <select name="category">
  <option value="0">---</option>

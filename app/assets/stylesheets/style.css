@@ -217,15 +217,17 @@ header{
 	margin-bottom:40px;
 	}
 #list li a{
-	color:#444b4e;
+	
 	text-decoration:none;
 	}
+
 #list li h4{
 	font-weight:bold;
 	font-size:17px;
 	padding:0px 10px 5px 0px;
 	padding:10px 15px;
   height:55px;
+  color:#444b4e;
 	}
 .item-photo{
 	width:240px;
@@ -806,6 +808,13 @@ overflow: hidden;
 	border-left:3px solid #333;
 	padding-left:15px;
 	}
+.mypage-ttl{
+font-size:24px;
+  margin-bottom:30px;
+  border-left:3px solid #333;
+  padding-left:15px;
+
+}
 .item-detail{
 	margin-top:25px;
 	line-height:2.1em;
@@ -1048,3 +1057,25 @@ textarea{
 #heder-right{
 	float:right;
 	}
+.mypage-update{
+background-color:#fbfbfb;
+}
+.mypage-update a:last-child{
+border-left:1px solid #bbb;
+padding-left:10px;
+margin-left:5px;
+}
+.mypage-update a{
+  display: inline-block;
+margin-top:10px;
+color:#1111cc;
+text-decoration: underline;
+}
+.mypage-review-h3{
+font-size:13px;
+margin-bottom:10px;
+padding-bottom:5px;
+border-left:3px solid #666;
+padding-left:10px;
+border-bottom:1px solid #ddd;
+}

@@ -1,35 +1,54 @@
 <div class="main-inner">
 <div class="contents row">
-    <%= form_tag("/products/#{@product.id}", method: :patch ) do %>
-      <h3>
-        編集する
-      </h3>
-      <input placeholder="title" type="text" name="title" value="<%= @product.title %>"><br>
-    <input placeholder="Image Url" type="text" name="image" value="<%= @product.image %>"><br>
-    <textarea cols="30" name="ex" placeholder="ex" rows="10">
-      <%= @product.ex %>
-    </textarea><br>
-     現在の選択<%= @product.price %>
-    <select name="price">
- <option value="">---</option>
-<option value="1円">1円</option>
-<option value="10円">10円</option>
-<option value="100円">100円</option>
-<option value="1000円">1000円</option>
-</select><br>
-現在の選択<%= @product.category %>
+    <%= form_tag("/products/#{@product.id}",:id => "review-w", method: :patch ) do %>
+    <div class="st-la">
+      <h2>「<%= @product.title %>」を編集する</h2><br>
+       <label>商品名・サービスタイトル: </label>
+    <input placeholder="例）IoT鍵自動開閉アプリ「ABC」" type="text" name="title" class="wd-middle" value="<%= @product.title %>"><br>
+    <label>商品説明: </label>
+    <textarea cols="30" name="ex" placeholder="商品説明を入力" class="wd-100" rows="10"><%= @product.ex %></textarea><br>
+
+     <label>商品画像: </label>
+     <div class="main-photo"><%= image_tag @product.itemphoto(:thumb) %></div><br>
+       <input type="file" name="itemphoto"><br>
+       <label>製品価格（税込）: </label>
+    <input placeholder="数字のみご記入ください" type="text" name="price1" value="" class="wd-mini">  円<br>
+    <label>月額利用価格（税込）: </label>
+    <input placeholder="数字のみご記入ください" type="text" name="price2" value="" class="wd-mini">  円<br>
+<label>カテゴリの選択: </label>
 <select name="category">
- <option value="0">---</option>
-<option value="1">2円</option>
-<option value="2">20円</option>
-<option value="3">200円</option>
-<option value="4">2000円</option>
-</select><br>
- <input placeholder="scene" type="text" name="scene" value="<%= @product.scene %>"><br>
- <input placeholder="detail" type="text" name="detail" value="<%= @product.detail %>"><br>
- <input placeholder="company" type="text" name="company" value="<%= @product.company %>"><br>
- <input placeholder="url" type="text" name="url" value="<%= @product.url %>"><br>
-    <input type="submit" value="SENT">
+ <option value="0"<% if(@product.category==0) %> selected<% end %>>---</option>
+<option value="1"<% if(@product.category==1) %> selected<% end %>>IoT製品全般</option>
+<option value="2"<% if(@product.category==2) %> selected<% end %>>ウェアラブル</option>
+<option value="3"<% if(@product.category==3) %> selected<% end %>>コネクテッドカー</option>
+<option value="4"<% if(@product.category==4) %> selected<% end %>>スマートホーム</option>
+<option value="5"<% if(@product.category==5) %> selected<% end %>>スマートシティ</option>
+<option value="6"<% if(@product.category==6) %> selected<% end %>>ドローン</option>
+<option value="7"<% if(@product.category==7) %> selected<% end %>>ロボット</option>
+<option value="8"<% if(@product.category==8) %> selected<% end %>>店舗・オフィス</option>
+<option value="9"<% if(@product.category==9) %> selected<% end %>>人工知能</option>
+<option value="10"<% if(@product.category==10) %> selected<% end %>>クラウド</option>
+<option value="11"<% if(@product.category==11) %> selected<% end %>>ビッグデータ</option>
+<option value="12"<% if(@product.category==12) %> selected<% end %>>農業</option>
+<option value="13"<% if(@product.category==13) %> selected<% end %>>センサー</option>
+<option value="14"<% if(@product.category==14) %> selected<% end %>>その他のIoT</option>
+</select><br><br>
+
+<label>利用シーン: </label>
+ <textarea  type="text" name="scene" class="wd-100"  cols="40" rows="7" placeholder="例）鍵を遠隔で閉めたい時に、airbnbでの利用" /><%= @product.scene %></textarea>
+ <label>仕様: </label>
+ <textarea  type="text" name="detail" class="wd-100"  cols="40" rows="7" placeholder="例）液晶サイズ：11.6インチ CPU：Pentium N3700(Braswell)/1.6GHz/4コア SSD容量：128GB メモリ容量：4GB OS：Windows 10 Home 64bit" /><%= @product.detail %></textarea>
+<label>販売会社: </label>
+<input  placeholder="例）株式会社ABC" type="text" name="company" class="wd-middle" value="<%= @product.company %>"/><br>
+ <label>WEBサイトURL: </label>
+ <input placeholder="例）http://www.yahoo.co.jp/" type="text" name="url" class="wd-middle" value="<%= @product.url %>"/><br>
+
+
+                <div class="post-button"><button name="button" type="submit">更新する</button></div>
+
+                <div class="clear"></div>
+
+     </div><!-- st-la -->
     <% end %>
   </div>
    </div><!-- main-inner -->

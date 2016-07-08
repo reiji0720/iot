@@ -1,17 +1,20 @@
 <div class="main-inner">
+<h2>「<%= @comment.product.title %>」へのレビューを編集する</h2><br>
  <% if current_user %>
       <%= form_tag("/products/#{@comment.product.id}/comments/#{@comment.id}", method: :patch ) do %>
+
       <label>評価: </label>
    <select name="rate">
    <option value="">---</option>
-<option value="2">1</option>
-<option value="4">2</option>
-<option value="6">3</option>
-<option value="8">4</option>
-<option value="10">5</option>
-  </select><br>
-        <textarea cols="30" name="review" placeholder="コメントする" rows="2"><%= @comment.review %></textarea>
-        <input type="submit" value="SENT">
+<option value="2"<% if(@comment.rate==2) %> selected<% end %>>1</option>
+<option value="4"<% if(@comment.rate==4) %> selected<% end %>>2</option>
+<option value="6"<% if(@comment.rate==6) %> selected<% end %>>3</option>
+<option value="8"<% if(@comment.rate==8) %> selected<% end %>>4</option>
+<option value="10"<% if(@comment.rate==10) %> selected<% end %>>5</option>
+  </select>  現在の評価＝<%= @comment.rate/2 %><br><br>
+
+        <textarea cols="30" name="review" class="wd-100" placeholder="コメントする" rows="2"><%= @comment.review %></textarea>
+        <input type="submit" value="更新する" class="review-write">
       <% end %>
     <% end %>
      </div><!-- main-inner -->

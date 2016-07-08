@@ -52,7 +52,10 @@
           <li class="clearfix review-li">
           <div class="review-face"><%= image_tag comment.user.avatar(:thumb) %></div><div class="review"><% if comment.rate.present? %><% ave = comment.rate %><% else %><!-- 存在present? -->
 <% ave = 0 %>
-<% end %><span class="rate rate<%= ave.round %>"></span><span class="rate-count"></span><p class="review-date"><%= comment.rate %> 2016.07.08 <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></p><p class="review-txt"><%= comment.review %></p></div>
+<% end %><span class="rate rate<%= ave.round %>"></span><span class="rate-count"></span><p class="review-date"><%= comment.updated_at.strftime("%Y-%m-%d %H:%M") %> <%= link_to comment.user.nickname, "/users/#{comment.user_id}" %></p><p class="review-txt"><%= comment.review %></p><% if user_signed_in? && comment.user_id == current_user.id %>
+        <%= link_to '編集', "/products/#{comment.product.id}/comments/#{comment.id}/edit", method: :get %>
+        <%= link_to '削除', "/products/#{comment.product.id}/comments/#{comment.id}", method: :delete %>
+        <% end %></div>
           </li>
         <% end %>
       <% end %>
