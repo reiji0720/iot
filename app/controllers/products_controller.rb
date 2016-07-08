@@ -1,8 +1,9 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: :index
+  before_action :authenticate_user!, only: :search
 impressionist actions: [:show]
     def index
-      @products = Product.includes(:user).order("created_at DESC").page(params[:page]).per(4)
+      @products = Product.includes(:user).order("created_at DESC").page(params[:page]).per(9)
     end
     def new
     end
@@ -24,6 +25,10 @@ impressionist actions: [:show]
     @productpv = Product.find(params[:id])#PV数取得
   impressionist(@productpv, nil, :unique => [:session_hash])#PV数取得
   @page_views = @productpv.impressionist_count#PV数取得
+  end
+
+  def search
+    @products = Product.where('title LIKE(?)', "%#{params[:keyword]}%")
   end
 
      def edit
