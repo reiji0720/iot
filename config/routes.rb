@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
   root  'products#index'
+
   resources :products do
     resources :comments
       collection do
       get 'search'
       end
   end
+  resources :categories
+
 
   resources :users, only: [:show]
 

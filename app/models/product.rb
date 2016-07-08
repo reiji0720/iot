@@ -6,6 +6,7 @@ class Product < ActiveRecord::Base
 
   belongs_to :user
   has_many :comments               #commentsテーブルとのアソシエーション
+  belongs_to :category
 
 is_impressionable   #PV数取得
 

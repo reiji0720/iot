@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
       @ranking = product_ids.map { |id| Product.find(id) }
   end
 
+#カテ
+before_action :cate
+  def cate
+    @catettl = Category.all
+  end
+
 #サインアウト後
   def after_sign_out_path_for(resource)
       '/users/sign_in' # サインアウト後のリダイレクト先URL

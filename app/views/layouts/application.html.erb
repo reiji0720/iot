@@ -52,20 +52,9 @@
   <div id="contents">
      <ul id="category">
       <li>IoTカテゴリー：</li>
-                <li><a href="">IoT製品全般（92）</a></li>
-                       <li><a href="">ウェアラブル（43）</a></li>
-                        <li><a href="">コネクテッドカー（1）</a></li>
-                        <li><a href="">スマートホーム（45）</a></li>
-                        <li><a href="">スマートシティ（23）</a></li>
-                        <li><a href="">ドローン（5）</a></li>
-                        <li><a href="">ロボット（14）</a></li>
-                        <li><a href="">店舗・オフィス（12）</a></li>
-                        <li><a href="">人工知能（9）</a></li>
-                        <li><a href="">クラウド（3）</a></li>
-                        <li><a href="">ビッグデータ（5）</a></li>
-                        <li><a href="">農業（12）</a></li>
-                        <li><a href="">センサー（2）</a></li>
-                        <li><a href="">その他のIoT（2）</a></li>
+<% @catettl.each.with_index(1) do |cate, i| %>
+<li><a href="/categories/<%= cate.id %>"><%= cate.title %>（<%= cate.products.count %>）</a></li>
+<% end %>
                 </ul>
             <div id="main">
 
@@ -75,6 +64,7 @@
 <br>
 </div><!-- main -->
               <div id="sidebar">
+
                 <h3>IoT総合ランキング</h3>
                 <ul class="ranking">
                 <% @ranking.each.with_index(1) do |product, i| %>

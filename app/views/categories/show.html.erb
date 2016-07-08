@@ -1,4 +1,6 @@
-                       <ul id="list">
+<h2 class="mypage-ttl">「<%= @category.title %>」のIoT商品一覧</h2>
+
+                    <ul id="list">
                        <% @products.each do |product| %>
                        <li><a href="/products/<%= product.id %>"><h4><%= product.title.truncate(24, separator: /\s/) %></h4><div class="item-photo"><%= image_tag product.itemphoto(:medium) %></div><div class="item-bottom"><a href="/categories/<%= product.category.id %>/" class="tag-item"><%= product.category.title %></a><p class="item-ex"><%= product.ex.truncate(50, separator: /\s/) %></p>
 <% if product.comments.present? %>
@@ -10,4 +12,3 @@
                        <span class="rate-count">(<%= product.comments.count %>件)</span></a></div></li>
 <% end %>
                     </ul>
-  <%= paginate(@products) %>
