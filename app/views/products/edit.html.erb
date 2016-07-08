@@ -12,9 +12,9 @@
      <div class="main-photo"><%= image_tag @product.itemphoto(:thumb) %></div><br>
        <input type="file" name="itemphoto"><br>
        <label>製品価格（税込）: </label>
-    <input placeholder="数字のみご記入ください" type="text" name="price1" value="" class="wd-mini">  円<br>
+    <input placeholder="数字のみご記入ください" type="text" name="price" value="<%= @product.price %>" class="wd-mini">  円<br>
     <label>月額利用価格（税込）: </label>
-    <input placeholder="数字のみご記入ください" type="text" name="price2" value="" class="wd-mini">  円<br>
+    <input placeholder="数字のみご記入ください" type="text" name="pricemonth" value="<%= @product.pricemonth %>" class="wd-mini">  円<br>
 <label>カテゴリの選択: </label>
 <select name="category">
  <option value="0"<% if(@product.category==0) %> selected<% end %>>---</option>

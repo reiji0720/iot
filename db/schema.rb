@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708054150) do
+ActiveRecord::Schema.define(version: 20160708062545) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -52,8 +52,6 @@ ActiveRecord::Schema.define(version: 20160708054150) do
     t.text     "title",                  limit: 65535
     t.text     "ex",                     limit: 65535
     t.integer  "category",               limit: 4
-    t.text     "image",                  limit: 65535
-    t.text     "price",                  limit: 65535
     t.text     "scene",                  limit: 65535
     t.text     "detail",                 limit: 65535
     t.text     "company",                limit: 65535
@@ -66,6 +64,8 @@ ActiveRecord::Schema.define(version: 20160708054150) do
     t.string   "itemphoto_content_type", limit: 255
     t.integer  "itemphoto_file_size",    limit: 4
     t.datetime "itemphoto_updated_at"
+    t.integer  "price",                  limit: 4
+    t.integer  "pricemonth",             limit: 4
   end
 
   create_table "users", force: :cascade do |t|

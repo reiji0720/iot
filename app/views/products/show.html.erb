@@ -17,8 +17,12 @@
 
 <tbody>
 <tr>
-<td class="wd1">価格帯</td>
-<td><%= simple_format(@product.price) %></td>
+<td class="wd1">製品価格（税込）</td>
+<td><%= @product.price %></td>
+</tr>
+<tr>
+<td class="wd1">月額課金（税込）</td>
+<td><%= @product.pricemonth %></td>
 </tr>
 <tr>
 <td class="wd1">運営会社</td>
