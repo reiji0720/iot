@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :move_to_index, except: :index
-
+impressionist actions: [:show]
     def index
       @products = Product.includes(:user).order("created_at DESC").page(params[:page]).per(4)
     end
@@ -21,6 +21,9 @@ class ProductsController < ApplicationController
     def show
     @product = Product.find(params[:id])
     @comments = @product.comments.includes(:user).order("created_at DESC")
+    @productpv = Product.find(params[:id])#PV数取得
+  impressionist(@productpv, nil, :unique => [:session_hash])#PV数取得
+  @page_views = @productpv.impressionist_count#PV数取得
   end
 
      def edit

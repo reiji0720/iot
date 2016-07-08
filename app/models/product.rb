@@ -7,6 +7,7 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :comments               #commentsテーブルとのアソシエーション
 
+is_impressionable   #PV数取得
   def review_average
     self.comments.average(:rate)
   end

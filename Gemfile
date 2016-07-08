@@ -50,4 +50,5 @@ gem 'pry-rails'
   gem 'kaminari'
   gem 'devise', '4.1.0'
   gem 'paperclip'
+  gem 'impressionist', '~> 1.5.1'
 

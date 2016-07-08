@@ -6,7 +6,7 @@
 <% ave1 = 0 %>
 <% end %><!-- 存在present? -->
 
-           <span class="rate rate<%= ave1.round %>"><%= (ave1/2).round(1) %></span><span class="rate-count">(<%= @product.comments.count %>)</span>　<a href="" class="tag-item">クラウド</a><a href="" class="tag-item"><%= @product.category %></a><span class="views">2453 views</span>
+           <span class="rate rate<%= ave1.round %>"><%= (ave1/2).round(1) %></span><span class="rate-count">(<%= @product.comments.count %>)</span>　<a href="" class="tag-item">クラウド</a><a href="" class="tag-item"><%= @product.category %></a><span class="views"><%= number_with_delimiter(@page_views) %> views</span>
            <br><br>
            <div class="main-photo"><%= image_tag @product.itemphoto(:medium) %></div>
            <p class="item-detail"><%= simple_format(@product.ex) %>
