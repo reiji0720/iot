@@ -25,7 +25,7 @@
 <div id="heder-right">
 <% if user_signed_in? %><!-- ログイン時 -->
 
-<div id="popmenu5"><div class="review-face-hed"><%= image_tag current_user.avatar(:thumb) %></div><div id="login-area"><%= current_user.nickname %>さん</div><div style="display:none">
+<div id="popmenu5"><div class="review-face-hed"><%= image_tag current_user.avatar(:thumb) %></div><div id="login-area"><%= current_user.nickname.truncate(13, separator: /\s/) %>さん</div><div style="display:none">
 <div id="cont5">
  <ul class="menu-login">
  <li><a href="/users/<%= current_user.id %>"><div class="log-li">マイページ</div></a></li>

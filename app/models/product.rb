@@ -12,4 +12,5 @@ is_impressionable   #PV数取得
   def review_average
     self.comments.average(:rate)
   end
+
 end

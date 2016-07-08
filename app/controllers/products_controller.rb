@@ -3,8 +3,11 @@ class ProductsController < ApplicationController
 
 impressionist actions: [:show]
     def index
-      @products = Product.includes(:user).order("created_at DESC").page(params[:page]).per(9)
+      @products = Product.includes(:user).order("updated_at DESC").page(params[:page]).per(9)
     end
+
+
+
     def new
     end
 

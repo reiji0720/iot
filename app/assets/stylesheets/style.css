@@ -1047,7 +1047,7 @@ textarea{
 	padding-left:15px;
 	}
 #login-area{
-	width:115px;
+	padding-right:15px;
 	float:left;
 	background:url(down-menu.png) no-repeat right;
 	background-size:13px;
