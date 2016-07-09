@@ -8,7 +8,9 @@ Rails.application.routes.draw do
       get 'search'
       end
   end
-  resources :categories
+  get 'categories/:id' => 'categories#show'
+  get 'tags/:id' => 'tags#show'
+
 
 
   resources :users, only: [:show]

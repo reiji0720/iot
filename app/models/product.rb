@@ -7,6 +7,8 @@ class Product < ActiveRecord::Base
   belongs_to :user
   has_many :comments               #commentsテーブルとのアソシエーション
   belongs_to :category
+  has_many :products_tags
+  has_many :tags, through: :products_tags
 
 is_impressionable   #PV数取得
 

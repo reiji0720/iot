@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 before_action :cate
   def cate
     @catettl = Category.all
+    @tagttl = Tag.all
   end
 
 #サインアウト後

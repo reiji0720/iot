@@ -17,21 +17,21 @@
     <input placeholder="数字のみご記入ください" type="text" name="pricemonth" value="<%= @product.pricemonth %>" class="wd-mini">  円<br>
 <label>カテゴリの選択: </label>
 <select name="category">
- <option value="14"<% if(@product.category==0) %> selected<% end %>>---</option>
-<option value="1"<% if(@product.category==1) %> selected<% end %>>IoT製品全般</option>
-<option value="2"<% if(@product.category==2) %> selected<% end %>>ウェアラブル</option>
-<option value="3"<% if(@product.category==3) %> selected<% end %>>コネクテッドカー</option>
-<option value="4"<% if(@product.category==4) %> selected<% end %>>スマートホーム</option>
-<option value="5"<% if(@product.category==5) %> selected<% end %>>スマートシティ</option>
-<option value="6"<% if(@product.category==6) %> selected<% end %>>ドローン</option>
-<option value="7"<% if(@product.category==7) %> selected<% end %>>ロボット</option>
-<option value="8"<% if(@product.category==8) %> selected<% end %>>店舗・オフィス</option>
-<option value="9"<% if(@product.category==9) %> selected<% end %>>人工知能</option>
-<option value="10"<% if(@product.category==10) %> selected<% end %>>クラウド</option>
-<option value="11"<% if(@product.category==11) %> selected<% end %>>ビッグデータ</option>
-<option value="12"<% if(@product.category==12) %> selected<% end %>>農業</option>
-<option value="13"<% if(@product.category==13) %> selected<% end %>>センサー</option>
-<option value="14"<% if(@product.category==14) %> selected<% end %>>その他のIoT</option>
+ <option value="14"<% if(@product.category_id==0) %> selected<% end %>>---</option>
+<option value="1"<% if(@product.category_id==1) %> selected<% end %>>IoT製品全般</option>
+<option value="2"<% if(@product.category_id==2) %> selected<% end %>>ウェアラブル</option>
+<option value="3"<% if(@product.category_id==3) %> selected<% end %>>コネクテッドカー</option>
+<option value="4"<% if(@product.category_id==4) %> selected<% end %>>スマートホーム</option>
+<option value="5"<% if(@product.category_id==5) %> selected<% end %>>スマートシティ</option>
+<option value="6"<% if(@product.category_id==6) %> selected<% end %>>ドローン</option>
+<option value="7"<% if(@product.category_id==7) %> selected<% end %>>ロボット</option>
+<option value="8"<% if(@product.category_id==8) %> selected<% end %>>店舗・オフィス</option>
+<option value="9"<% if(@product.category_id==9) %> selected<% end %>>人工知能</option>
+<option value="10"<% if(@product.category_id==10) %> selected<% end %>>クラウド</option>
+<option value="11"<% if(@product.category_id==11) %> selected<% end %>>ビッグデータ</option>
+<option value="12"<% if(@product.category_id==12) %> selected<% end %>>農業</option>
+<option value="13"<% if(@product.category_id==13) %> selected<% end %>>センサー</option>
+<option value="14"<% if(@product.category_id==14) %> selected<% end %>>その他のIoT</option>
 </select><br><br>
 
 <label>利用シーン: </label>

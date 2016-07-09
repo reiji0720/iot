@@ -40,7 +40,15 @@
 <td class="wd1">WEBサイトURL</td>
 <td><a href="<%= @product.url %>"><%= simple_format(@product.url) %></a></td>
 </tr>
+<tr>
+<td class="wd1">タグ（関連キーワード）</td>
+<td><% @tags.each.with_index(1) do |tag, i| %>
+<a href="/tags/<%= tag.id %>"><%= tag.title %></a>  
+<% end %></td>
+</tr>
 </table>
+
+
 
 <a href="<%= @product.url %>" target="_blank" class="item-url">サイトへ飛ぶ</a>
 

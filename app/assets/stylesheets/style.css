@@ -581,6 +581,12 @@ a #write{
 	background-color:#999;
 	color:#fff;
 	}
+#tag-wrap li a:hover{
+  color:#fff;
+  }
+#tag-wrap li:hover a{
+  color:#fff;
+  }
 #tag-wrap{
 	background-color:#fff;
 	}
@@ -594,8 +600,12 @@ a #write{
 	color:#888;
 	display:inline-block;
 	font-size:12px;
-	
 	}
+#tag-wrap li a{
+  color:#888;
+  font-size:12px;
+  text-decoration: none;
+  }
 
 .tag{
 	width:1050px;

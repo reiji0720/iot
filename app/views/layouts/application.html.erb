@@ -83,32 +83,9 @@
 <div class="tag">
 <h3>IoTタグの一覧</h3>
 <br>
-<a href=""><li>社会問題(5)</li></a>
-<a href=""><li>アミューズメント(21)</li></a>
-<a href=""><li>セキュリティ(4)</li></a>
-<a href=""><li>エコ(6)</li></a>
-<a href=""><li>おしゃれ(10)</li></a>
-<a href=""><li>面白い(1)</li></a>
-<a href=""><li>ミニマリスト(11)</li></a>
-<a href=""><li>便利(1)</li></a>
-<a href=""><li>分析(3)</li></a>
-<a href=""><li>位置情報(17)</li></a>
-<a href=""><li>センサー(16)</li></a>
-<a href=""><li>高機能(11)</li></a>
-<a href=""><li>無料(3)</li></a>
-<a href=""><li>シンプル(2)</li></a>
-<a href=""><li>シェアリングエコノミー(2)</li></a>
-<a href=""><li>マッチング(5)</li></a>
-<a href=""><li>日常生活(1)</li></a>
-<a href=""><li>スタートアップ(17)</li></a>
-<a href=""><li>旅行観光(2)</li></a>
-<a href=""><li>インバウンド(1)</li></a>
-<a href=""><li>アプリ(5)</li></a>
-<a href=""><li>自然(2)</li></a>
-<a href=""><li>業務効率化(6)</li></a>
-<a href=""><li>売上UP(19)</li></a>
-<a href=""><li>プラットフォーム(4)</li></a>
-<a href=""><li>M2M(4)</li></a>
+<% @tagttl.each.with_index(1) do |tag, i| %>
+<li><a href="/tags/<%= tag.id %>"><%= tag.title %>（<%= tag.products.count %>）</a></li>
+<% end %>
 </div><!-- tag -->
 </div><!-- tag-wrap -->
 

@@ -25,6 +25,7 @@ impressionist actions: [:show]
     def show
     @product = Product.find(params[:id])
     @comments = @product.comments.includes(:user).order("created_at DESC")
+    @tags = @product.tags
     @productpv = Product.find(params[:id])#PV数取得
   impressionist(@productpv, nil, :unique => [:session_hash])#PV数取得
   @page_views = @productpv.impressionist_count#PV数取得
