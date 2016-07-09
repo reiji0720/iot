@@ -1004,7 +1004,7 @@ textarea{
 	margin-left:5px;
 	}
 .review-face-hed{
-	width:50px;
+	width:45px;
 	float:left;
 	}
 .review-face-hed img{
@@ -1049,6 +1049,7 @@ textarea{
 #login-area{
 	padding-right:15px;
 	float:left;
+  font-size:12px;
 	background:url(down-menu.png) no-repeat right;
 	background-size:13px;
 	padding-top:3px;
