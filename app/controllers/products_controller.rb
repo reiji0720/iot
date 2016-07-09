@@ -12,7 +12,7 @@ impressionist actions: [:show]
     end
 
     def create
-      Product.create(title: product_params[:title],ex: product_params[:ex],category: product_params[:category],price: product_params[:price],pricemonth: product_params[:pricemonth],detail: product_params[:detail],company: product_params[:company],scene: product_params[:scene],url: product_params[:url],itemphoto: product_params[:itemphoto],user_id: current_user.id)
+      Product.create(title: product_params[:title],ex: product_params[:ex],category_id: product_params[:category_id],price: product_params[:price],pricemonth: product_params[:pricemonth],detail: product_params[:detail],company: product_params[:company],scene: product_params[:scene],url: product_params[:url],itemphoto: product_params[:itemphoto],user_id: current_user.id)
     end
 
     def destroy
@@ -48,7 +48,7 @@ impressionist actions: [:show]
 
     private
     def product_params
-      params.permit(:title, :ex, :category, :price, :pricemonth, :detail, :company, :scene, :url, :itemphoto)
+      params.permit(:title, :ex, :category_id, :price, :pricemonth, :detail, :company, :scene, :url, :itemphoto)
     end
 
     def move_to_index

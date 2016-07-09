@@ -1,7 +1,7 @@
 <h2 class="mypage-ttl">マイページ：<%= @nickname %>さんの投稿一覧</h2>
 <ul id="list">
                        <% @products.each do |product| %>
-                       <li><a href="/products/<%= product.id %>"><h4><%= product.title.truncate(24, separator: /\s/) %></h4><div class="item-photo"><%= image_tag product.itemphoto(:medium) %></div><div class="item-bottom"><a href="" class="tag-item">クラウド</a><p class="item-ex"><%= product.ex.truncate(50, separator: /\s/) %></p>
+                       <li><a href="/products/<%= product.id %>"><h4><%= product.title.truncate(24, separator: /\s/) %></h4><div class="item-photo"><%= image_tag product.itemphoto(:medium) %></div><div class="item-bottom"><a href="/categories/<%= product.category.id %>/" class="tag-item"><%= product.category.title %></a><p class="item-ex"><%= product.ex.truncate(50, separator: /\s/) %></p>
 <% if product.comments.present? %>
                        <% ave = product.review_average %><span class="rate rate<%= ave.round %>"><%= (ave/2).round(1) %></span>
 

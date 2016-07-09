@@ -16,7 +16,7 @@
     <label>月額利用価格（税込）: </label>
     <input placeholder="数字のみご記入ください" type="text" name="pricemonth" value="<%= @product.pricemonth %>" class="wd-mini">  円<br>
 <label>カテゴリの選択: </label>
-<select name="category">
+<select name="category_id">
  <option value="14"<% if(@product.category_id==0) %> selected<% end %>>---</option>
 <option value="1"<% if(@product.category_id==1) %> selected<% end %>>IoT製品全般</option>
 <option value="2"<% if(@product.category_id==2) %> selected<% end %>>ウェアラブル</option>
@@ -33,6 +33,7 @@
 <option value="13"<% if(@product.category_id==13) %> selected<% end %>>センサー</option>
 <option value="14"<% if(@product.category_id==14) %> selected<% end %>>その他のIoT</option>
 </select><br><br>
+
 
 <label>利用シーン: </label>
  <textarea  type="text" name="scene" class="wd-100"  cols="40" rows="7" placeholder="例）鍵を遠隔で閉めたい時に、airbnbでの利用" /><%= @product.scene %></textarea>
