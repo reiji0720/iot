@@ -12,7 +12,14 @@ impressionist actions: [:show]
     end
 
     def create
+      # binding.pry
       Product.create(title: product_params[:title],ex: product_params[:ex],category_id: product_params[:category_id],price: product_params[:price],pricemonth: product_params[:pricemonth],detail: product_params[:detail],company: product_params[:company],scene: product_params[:scene],url: product_params[:url],itemphoto: product_params[:itemphoto],user_id: current_user.id)
+      #Products_tag.new
+      # if params[:tag_id].present?
+      #   params[:tag_id].each do |tag_num|
+      #     Products_tag.create(tag_id: tag_num.to_i)
+      #   end
+      # end
     end
 
     def destroy

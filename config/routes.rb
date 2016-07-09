@@ -7,13 +7,14 @@ Rails.application.routes.draw do
       collection do
       get 'search'
       end
+    resources :products_tags
   end
   get 'categories/:id' => 'categories#show'
   get 'tags/:id' => 'tags#show'
 
 
-
   resources :users, only: [:show]
+  #resources :products_tags, only: [:create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

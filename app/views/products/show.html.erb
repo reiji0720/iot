@@ -100,3 +100,31 @@
 
 
       </div><!-- main-inner -->
+
+      <br>
+
+<% if user_signed_in? && @product.user_id == current_user.id %><!-- ログイン時 -->
+<div class="main-inner">
+<h2>タグの追加・削除（※更新ボタンは不要です）</h2>
+ <%= form_tag("/products/#{@product.id}/products_tags",:remote=>true, method: :post) do %>
+ <input type="hidden" name="tag_id" value="1"><p class="tag-ttl">社会問題</p><button name="button" type="submit">＋</button>
+      <% end %>
+<%= form_tag("/products/#{@product.id}/products_tags", :remote=>true,method: :post) do %>
+ <input type="hidden" name="tag_id" value="2"><p class="tag-ttl">社アミューズメント</p><button name="button" type="submit">＋</button>
+      <% end %>
+      <%= form_tag("/products/#{@product.id}/products_tags", :remote=>true,method: :post) do %>
+ <input type="hidden" name="tag_id" value="3"><p class="tag-ttl">セキュリティ</p><button name="button" type="submit">＋</button>
+      <% end %>
+      <%= form_tag("/products/#{@product.id}/products_tags", :remote=>true,method: :post) do %>
+ <input type="hidden" name="tag_id" value="4"><button name="button" type="submit">＋エコ</button>
+      <% end %>
+      <%= form_tag("/products/#{@product.id}/products_tags", :remote=>true,method: :post) do %>
+ <input type="hidden" name="tag_id" value="5"><button name="button" type="submit">＋おしゃれ</button>
+      <% end %>
+<br>
+<h2>追加済みタグ</h2>
+      <% @tags.each.with_index(1) do |tag, i| %>
+<%= tag.title %>× 
+<% end %>
+      </div><!-- main-inner -->
+      <% end %>
