@@ -84,7 +84,9 @@
 <h3>IoTタグの一覧</h3>
 <br>
 <% @tagttl.each.with_index(1) do |tag, i| %>
-<li><a href="/tags/<%= tag.id %>"><%= tag.title %>（<%= tag.products.count %>）</a></li>
+<% if tag.taggings_count !=0 %>
+<li><%= tag %> (<%= tag.taggings_count %>)</li>
+<% end %>
 <% end %>
 </div><!-- tag -->
 </div><!-- tag-wrap -->

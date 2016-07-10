@@ -1,59 +1,39 @@
   <div class="main-inner">
-<div class="contents row">
+<h2>新規IoT商品登録</h2><br>
 <% if user_signed_in? %><!-- ログイン時 -->
-  <%= form_tag('/products',:multipart => true,:id => "review-w", method: :post) do %>
-  <div class="st-la">
-    <h2>新規商品掲載</h2><br>
-    <label>商品名・サービスタイトル: </label>
-    <input placeholder="例）IoT鍵自動開閉アプリ「ABC」" type="text" name="title" class="wd-middle"><br>
-    <label>商品説明: </label>
-    <textarea cols="30" name="ex" placeholder="商品説明を入力" class="wd-100" rows="10"></textarea><br>
+<div id="review-w">
+<div class="st-la">
+<%= form_for (@product) do |f| %>
+<%= f.label :title, "商品名・サービスタイトル:" %>
+<%= f.text_field :title, :class => 'wd-middle',:placeholder => "例）IoT鍵自動開閉アプリ「ABC」" %>
+<%= f.label :ex, "商品説明: " %>
+<%= f.text_area :ex, :class => 'wd-100 he-90',:placeholder => "商品説明を入力" %>
+<%= f.label :itemphoto, "商品画像: " %>
+<%= f.file_field :itemphoto %><br>
+<%= f.label :price, "製品価格（税込）:" %>
+<%= f.text_field :price, :class => 'wd-mini',:placeholder => "数字のみご記入ください" %>
+<%= f.label :pricemonth, "月額利用価格（税込）:" %>
+<%= f.text_field :pricemonth, :class => 'wd-mini',:placeholder => "数字のみご記入ください" %>
+<%= f.label :category_id, "カテゴリの選択:" %>
+<%= select :product, :category_id, [["", "14"],["IoT製品全般", "1"], ["ウェアラブル", "2"],["コネクテッドカー", "3"], ["スマートホーム", "4"], ["スマートシティ", "5"], ["ドローン", "6"], ["ロボット", "7"], ["店舗・オフィス", "8"], ["人工知能", "9"], ["クラウド", "10"], ["ビッグデータ", "11"], ["農業", "12"], ["センサー", "13"], ["その他のIoT", "14"]] %><br><br>
+<%= f.label :iot_list, "タグ（カンマ区切り）:" %>
+    <%= text_field_tag 'product[iot_list]', @product.iot_list.join(','),:class => 'wd-middle',:placeholder => "例）おしゃれ,スタートアップ,分析" %>
+<%= f.label :scene, "利用シーン:" %>
+<%= f.text_area  :scene, :class => 'wd-100 he-90',:placeholder => "例）鍵を遠隔で閉めたい時に、airbnbでの利用" %>
+<%= f.label :detail, "仕様:" %>
+<%= f.text_area  :detail, :class => 'wd-100 he-90',:placeholder => "例）液晶サイズ：11.6インチ CPU：Pentium N3700(Braswell)/1.6GHz/4コア SSD容量：128GB メモリ容量：4GB OS：Windows 10 Home 64bit" %>
+<%= f.label :company, "販売会社:" %>
+<%= f.text_field :company, :class => 'wd-middle',:placeholder => "例）株式会社ABC" %>
+<%= f.label :url, "WEBサイトURL:" %>
+<%= f.text_field :url, :class => 'wd-middle',:placeholder => "例）http://www.yahoo.co.jp/" %>
 
-    <label>商品画像: </label>
-       <input type="file" name="itemphoto"><br>
-    <label>製品価格（税込）: </label>
-    <input placeholder="数字のみご記入ください" type="text" name="price" class="wd-mini">  円<br>
-    <label>月額利用価格（税込）: </label>
-    <input placeholder="数字のみご記入ください" type="text" name="pricemonth" class="wd-mini">  円<br>
-<label>カテゴリの選択: </label>
-<select name="category_id">
- <option value="14">---</option>
-<option value="1">IoT製品全般</option>
-<option value="2">ウェアラブル</option>
-<option value="3">コネクテッドカー</option>
-<option value="4">スマートホーム</option>
-<option value="5">スマートシティ</option>
-<option value="6">ドローン</option>
-<option value="7">ロボット</option>
-<option value="8">店舗・オフィス</option>
-<option value="9">人工知能</option>
-<option value="10">クラウド</option>
-<option value="11">ビッグデータ</option>
-<option value="12">農業</option>
-<option value="13">センサー</option>
-<option value="14">その他のIoT</option>
-</select><br><br>
-
-<label>利用シーン: </label>
- <textarea  type="text" name="scene" class="wd-100"  cols="40" rows="7" placeholder="例）鍵を遠隔で閉めたい時に、airbnbでの利用" /></textarea>
- <label>仕様: </label>
- <textarea  type="text" name="detail" class="wd-100"  cols="40" rows="7" placeholder="例）液晶サイズ：11.6インチ CPU：Pentium N3700(Braswell)/1.6GHz/4コア SSD容量：128GB メモリ容量：4GB OS：Windows 10 Home 64bit" /></textarea>
-<label>販売会社: </label>
-<input  placeholder="例）株式会社ABC" type="password" name="company" class="wd-middle"/><br>
- <label>WEBサイトURL: </label>
- <input  placeholder="例）http://www.yahoo.co.jp/" type="password" name="url" class="wd-middle"/><br>
-
-
-                <div class="post-button"><button name="button" type="submit">商品登録する</button></div>
-
-                <div class="clear"></div>
-  <% end %>
-  </div><!-- st-la -->
+    <div class="post-button"><%= f.submit %></div>
+<% end %>
+</div><!-- st-la -->
+  </div><!-- review-w -->
   <% else %><!-- そうでない場合 -->
       商品を掲載するためには<%= link_to "ユーザー新規登録", new_user_registration_path, :class => 'post' %>ください
       <% end %>
-</div>
-
 
 
 

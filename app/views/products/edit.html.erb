@@ -1,63 +1,41 @@
 <div class="main-inner">
-<div class="contents row">
-    <%= form_tag("/products/#{@product.id}",:id => "review-w", method: :patch ) do %>
-    <div class="st-la">
-      <h2>「<%= @product.title %>」を編集する</h2><br>
-       <label>商品名・サービスタイトル: </label>
-    <input placeholder="例）IoT鍵自動開閉アプリ「ABC」" type="text" name="title" class="wd-middle" value="<%= @product.title %>"><br>
-    <label>商品説明: </label>
-    <textarea cols="30" name="ex" placeholder="商品説明を入力" class="wd-100" rows="10"><%= @product.ex %></textarea><br>
+<h2>「<%= @product.title %>」を編集する</h2><br>
+<% if user_signed_in? %><!-- ログイン時 -->
+<div id="review-w">
+<div class="st-la">
+   <%= form_for (@product) do |f| %>
+<%= f.label :title, "商品名・サービスタイトル:" %>
+<%= f.text_field :title, :class => 'wd-middle',:placeholder => "例）IoT鍵自動開閉アプリ「ABC」" %>
+<%= f.label :ex, "商品説明: " %>
+<%= f.text_area :ex, :class => 'wd-100 he-90',:placeholder => "商品説明を入力" %><br><br>
+<%= image_tag @product.itemphoto(:thumb) %>
+<%= f.label :itemphoto, "商品画像: " %>
+<%= f.file_field :itemphoto %><br>
+<%= f.label :price, "製品価格（税込）:" %>
+<%= f.text_field :price, :class => 'wd-mini',:placeholder => "数字のみご記入ください" %>
+<%= f.label :pricemonth, "月額利用価格（税込）:" %>
+<%= f.text_field :pricemonth, :class => 'wd-mini',:placeholder => "数字のみご記入ください" %>
+<%= f.label :category_id, "カテゴリの選択:" %>
+<%= select :product, :category_id, [["", "14"],["IoT製品全般", "1"], ["ウェアラブル", "2"],["コネクテッドカー", "3"], ["スマートホーム", "4"], ["スマートシティ", "5"], ["ドローン", "6"], ["ロボット", "7"], ["店舗・オフィス", "8"], ["人工知能", "9"], ["クラウド", "10"], ["ビッグデータ", "11"], ["農業", "12"], ["センサー", "13"], ["その他のIoT", "14"]] %><br><br>
+<%= f.label :iot_list, "タグ（カンマ区切り）:" %>
+    <%= text_field_tag 'product[iot_list]', @product.iot_list.join(','),:class => 'wd-middle',:placeholder => "例）おしゃれ,スタートアップ,分析" %>
+<%= f.label :scene, "利用シーン:" %>
+<%= f.text_area  :scene, :class => 'wd-100 he-90',:placeholder => "例）鍵を遠隔で閉めたい時に、airbnbでの利用" %>
+<%= f.label :detail, "仕様:" %>
+<%= f.text_area  :detail, :class => 'wd-100 he-90',:placeholder => "例）液晶サイズ：11.6インチ CPU：Pentium N3700(Braswell)/1.6GHz/4コア SSD容量：128GB メモリ容量：4GB OS：Windows 10 Home 64bit" %>
+<%= f.label :company, "販売会社:" %>
+<%= f.text_field :company, :class => 'wd-middle',:placeholder => "例）株式会社ABC" %>
+<%= f.label :url, "WEBサイトURL:" %>
+<%= f.text_field :url, :class => 'wd-middle',:placeholder => "例）http://www.yahoo.co.jp/" %>
 
-     <label>商品画像: </label>
-     <div class="main-photo"><%= image_tag @product.itemphoto(:thumb) %></div><br>
-       <input type="file" name="itemphoto"><br>
-       <label>製品価格（税込）: </label>
-    <input placeholder="数字のみご記入ください" type="text" name="price" value="<%= @product.price %>" class="wd-mini">  円<br>
-    <label>月額利用価格（税込）: </label>
-    <input placeholder="数字のみご記入ください" type="text" name="pricemonth" value="<%= @product.pricemonth %>" class="wd-mini">  円<br>
-<label>カテゴリの選択: </label>
-<select name="category_id">
- <option value="14"<% if(@product.category_id==0) %> selected<% end %>>---</option>
-<option value="1"<% if(@product.category_id==1) %> selected<% end %>>IoT製品全般</option>
-<option value="2"<% if(@product.category_id==2) %> selected<% end %>>ウェアラブル</option>
-<option value="3"<% if(@product.category_id==3) %> selected<% end %>>コネクテッドカー</option>
-<option value="4"<% if(@product.category_id==4) %> selected<% end %>>スマートホーム</option>
-<option value="5"<% if(@product.category_id==5) %> selected<% end %>>スマートシティ</option>
-<option value="6"<% if(@product.category_id==6) %> selected<% end %>>ドローン</option>
-<option value="7"<% if(@product.category_id==7) %> selected<% end %>>ロボット</option>
-<option value="8"<% if(@product.category_id==8) %> selected<% end %>>店舗・オフィス</option>
-<option value="9"<% if(@product.category_id==9) %> selected<% end %>>人工知能</option>
-<option value="10"<% if(@product.category_id==10) %> selected<% end %>>クラウド</option>
-<option value="11"<% if(@product.category_id==11) %> selected<% end %>>ビッグデータ</option>
-<option value="12"<% if(@product.category_id==12) %> selected<% end %>>農業</option>
-<option value="13"<% if(@product.category_id==13) %> selected<% end %>>センサー</option>
-<option value="14"<% if(@product.category_id==14) %> selected<% end %>>その他のIoT</option>
-</select><br><br>
+    <div class="post-button"><%= f.submit %></div>
+<% end %>
 
-<!--
-<label>タグの選択: </label>
-<input type="checkbox" name="tag_id[]" value="1"> 社会問題
-<input type="checkbox" name="tag_id[]" value="2"> アミューズメント
-<input type="checkbox" name="tag_id[]" value="3"> セキュリティ
--->
+</div><!-- st-la -->
+  </div><!-- review-w -->
+<% else %><!-- そうでない場合 -->
+      商品を掲載するためには<%= link_to "ユーザー新規登録", new_user_registration_path, :class => 'post' %>ください
+      <% end %>
 
-<label>利用シーン: </label>
- <textarea  type="text" name="scene" class="wd-100"  cols="40" rows="7" placeholder="例）鍵を遠隔で閉めたい時に、airbnbでの利用" /><%= @product.scene %></textarea>
- <label>仕様: </label>
- <textarea  type="text" name="detail" class="wd-100"  cols="40" rows="7" placeholder="例）液晶サイズ：11.6インチ CPU：Pentium N3700(Braswell)/1.6GHz/4コア SSD容量：128GB メモリ容量：4GB OS：Windows 10 Home 64bit" /><%= @product.detail %></textarea>
-<label>販売会社: </label>
-<input  placeholder="例）株式会社ABC" type="text" name="company" class="wd-middle" value="<%= @product.company %>"/><br>
- <label>WEBサイトURL: </label>
- <input placeholder="例）http://www.yahoo.co.jp/" type="text" name="url" class="wd-middle" value="<%= @product.url %>"/><br>
-
-
-                <div class="post-button"><button name="button" type="submit">更新する</button></div>
-
-                <div class="clear"></div>
-
-     </div><!-- st-la -->
-    <% end %>
-  </div>
    </div><!-- main-inner -->
 
-   

@@ -19,7 +19,8 @@ class ApplicationController < ActionController::Base
 before_action :cate
   def cate
     @catettl = Category.all
-    @tagttl = Tag.all
+    @tagttl = ActsAsTaggableOn::Tag.all
+
   end
 
 #サインアウト後

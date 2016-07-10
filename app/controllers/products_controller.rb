@@ -7,19 +7,14 @@ impressionist actions: [:show]
     end
 
 
-
     def new
+      @product = Product.new #form_for用！
     end
 
     def create
-      # binding.pry
-      Product.create(title: product_params[:title],ex: product_params[:ex],category_id: product_params[:category_id],price: product_params[:price],pricemonth: product_params[:pricemonth],detail: product_params[:detail],company: product_params[:company],scene: product_params[:scene],url: product_params[:url],itemphoto: product_params[:itemphoto],user_id: current_user.id)
-      #Products_tag.new
-      # if params[:tag_id].present?
-      #   params[:tag_id].each do |tag_num|
-      #     Products_tag.create(tag_id: tag_num.to_i)
-      #   end
-      # end
+      binding.pry
+#Product.create(title: product_params[:title],iot_list: product_params[:iot_list])
+      Product.create(title: product_params[:title],ex: product_params[:ex],category_id: product_params[:category_id],price: product_params[:price],pricemonth: product_params[:pricemonth],detail: product_params[:detail],company: product_params[:company],iot_list: product_params[:iot_list],scene: product_params[:scene],url: product_params[:url],itemphoto: product_params[:itemphoto],user_id: current_user.id)
     end
 
     def destroy
@@ -32,7 +27,7 @@ impressionist actions: [:show]
     def show
     @product = Product.find(params[:id])
     @comments = @product.comments.includes(:user).order("created_at DESC")
-    @tags = @product.tags
+    #@tags = @product.tags
     @productpv = Product.find(params[:id])#PV数取得
   impressionist(@productpv, nil, :unique => [:session_hash])#PV数取得
   @page_views = @productpv.impressionist_count#PV数取得
@@ -55,7 +50,11 @@ impressionist actions: [:show]
 
     private
     def product_params
-      params.permit(:title, :ex, :category_id, :price, :pricemonth, :detail, :company, :scene, :url, :itemphoto)
+      params.require(:product).permit(:title, :ex, :category_id, :price,:iot_list, :pricemonth, :detail, :company, :scene, :url, :itemphoto)
+    end
+
+    def up_product_params
+      params.require(:product).permit(:title, :ex, :category_id,:iot_list, :price, :pricemonth, :detail, :company, :scene, :url, :itemphoto)
     end
 
     def move_to_index

@@ -10,6 +10,10 @@ class Product < ActiveRecord::Base
   has_many :products_tags
   has_many :tags, through: :products_tags
 
+ # タグ機能の実装
+  acts_as_taggable_on :iots # post.iot_list が追加される
+  acts_as_taggable            # acts_as_taggable_on :tags のエイリアス
+
 is_impressionable   #PV数取得
 
   def review_average

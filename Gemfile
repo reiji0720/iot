@@ -51,4 +51,5 @@ gem 'pry-rails'
   gem 'devise', '4.1.0'
   gem 'paperclip'
   gem 'impressionist', '~> 1.5.1'
+  gem 'acts-as-taggable-on', '~> 3.4'
 
