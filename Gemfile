@@ -52,4 +52,7 @@ gem 'pry-rails'
   gem 'paperclip'
   gem 'impressionist', '~> 1.5.1'
   gem 'acts-as-taggable-on', '~> 3.4'
+  group :production, :staging do
+  gem 'rails_12factor'
+end
 
