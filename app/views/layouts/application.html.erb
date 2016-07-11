@@ -90,12 +90,11 @@
 <div id="tag-wrap">
 <div class="tag">
 <h3>IoTタグの一覧</h3>
-<p></p>
 <br>
 <% @tagttl.each.with_index(1) do |tag, i| %>
 
 <% if tag.taggings_count !=0 %>
-<li><%= tag %> (<%= tag.taggings_count %>)</li>
+  <li><a href="/tags/<%= tag.name %>"><%= tag %></a> (<%= tag.taggings_count %>)</li>
 <% end %>
 <% end %>
 </div><!-- tag -->

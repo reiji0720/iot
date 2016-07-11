@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   def index
-    @tag = Tag.all
+    @items = Product.tagged_with(params[:tag])
     end
 
   def show

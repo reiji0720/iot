@@ -4,8 +4,7 @@ class ProductsController < ApplicationController
 impressionist actions: [:show]
     def index
       @products = Product.includes(:user).order("updated_at DESC").page(params[:page]).per(9)
-    #@tag = Product.new
-    #@productall = @products.tags
+    @items = Product.tagged_with(params[:tag])
     end
 
 

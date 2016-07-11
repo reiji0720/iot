@@ -22,8 +22,6 @@ before_action :cate
   def cate
     @catettl = Category.all
     @tagttl = ActsAsTaggableOn::Tag.all
-
-
   end
 
 #サインアウト後
