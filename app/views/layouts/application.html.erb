@@ -75,6 +75,14 @@
                     <% end %>
                   <% end %>
                 </ul>
+                <br><br>
+                <h3>ユーザーランキング</h3>
+               <% @userranking.each.with_index(1) do |user, i| %>
+               <div><%= i %>位：<%= link_to user.nickname, "/users/#{user.id}" %>
+                （<%= user.comments.count %>件）
+               </div>
+
+          <% end %>
             </div><!-- sidebar -->
             <div class="clear"></div>
     </div><!-- contentes -->
@@ -82,8 +90,10 @@
 <div id="tag-wrap">
 <div class="tag">
 <h3>IoTタグの一覧</h3>
+<p></p>
 <br>
 <% @tagttl.each.with_index(1) do |tag, i| %>
+
 <% if tag.taggings_count !=0 %>
 <li><%= tag %> (<%= tag.taggings_count %>)</li>
 <% end %>

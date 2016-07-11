@@ -10,7 +10,7 @@ Rails.application.routes.draw do
    # resources :products_tags
   end
   get 'categories/:id' => 'categories#show'
-  #get 'tags/:id' => 'tags#show'
+  #get 'tag/:id' => 'tags#index'
 
 
   resources :users, only: [:show]

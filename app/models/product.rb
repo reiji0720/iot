@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
   has_many :comments               #commentsテーブルとのアソシエーション
   belongs_to :category
   has_many :products_tags
-  has_many :tags, through: :products_tags
+  has_many :tags, through: :taggings
 
  # タグ機能の実装
   acts_as_taggable_on :iots # post.iot_list が追加される

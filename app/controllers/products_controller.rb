@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
 impressionist actions: [:show]
     def index
       @products = Product.includes(:user).order("updated_at DESC").page(params[:page]).per(9)
+    #@tag = Product.new
+    #@productall = @products.tags
     end
 
 
@@ -12,7 +14,7 @@ impressionist actions: [:show]
     end
 
     def create
-      binding.pry
+     #
 #Product.create(title: product_params[:title],iot_list: product_params[:iot_list])
       Product.create(title: product_params[:title],ex: product_params[:ex],category_id: product_params[:category_id],price: product_params[:price],pricemonth: product_params[:pricemonth],detail: product_params[:detail],company: product_params[:company],iot_list: product_params[:iot_list],scene: product_params[:scene],url: product_params[:url],itemphoto: product_params[:itemphoto],user_id: current_user.id)
     end

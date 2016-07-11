@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   def ranking
     product_ids = Comment.group(:product_id).order('count_product_id DESC').limit(5).count(:product_id).keys
       @ranking = product_ids.map { |id| Product.find(id) }
+      user_ids = Comment.group(:user_id).order('count_user_id DESC').limit(10).count(:user_id).keys
+      @userranking = user_ids.map { |id| User.find(id) }
   end
 
 #カテ
@@ -20,6 +22,7 @@ before_action :cate
   def cate
     @catettl = Category.all
     @tagttl = ActsAsTaggableOn::Tag.all
+
 
   end
 
