@@ -1,0 +1,9 @@
+$(function(){
+$("#form01").validate();
+})
+$(function(){
+$("#new_product").validate();
+})
+$(function(){
+$(".edit_product").validate();
+})

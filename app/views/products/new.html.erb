@@ -4,10 +4,12 @@
 <div id="review-w">
 <div class="st-la">
 <%= form_for (@product) do |f| %>
-<%= f.label :title, "商品名・サービスタイトル:" %>
-<%= f.text_field :title, :class => 'wd-middle',:placeholder => "例）IoT鍵自動開閉アプリ「ABC」" %>
+<p class="error">(*必須)</p>
+  <%= f.label :title, "商品名・サービスタイトル:" %>
+<%= f.text_field :title, :class => 'wd-middle required',:placeholder => "例）IoT鍵自動開閉アプリ「ABC」",:minlength => "3" %>
+<p class="error">(*必須)</p>
 <%= f.label :ex, "商品説明: " %>
-<%= f.text_area :ex, :class => 'wd-100 he-90',:placeholder => "商品説明を入力" %>
+<%= f.text_area :ex, :class => 'wd-100 he-90 required',:placeholder => "商品説明を入力",:minlength => "20" %>
 <%= f.label :itemphoto, "商品画像: " %>
 <%= f.file_field :itemphoto %><br>
 <%= f.label :price, "製品価格（税込）:" %>
@@ -19,9 +21,9 @@
 <%= f.label :iot_list, "タグ（カンマ区切り）:" %>
     <%= text_field_tag 'product[iot_list]', @product.iot_list.join(','),:class => 'wd-middle',:placeholder => "例）おしゃれ,スタートアップ,分析" %>
 <%= f.label :scene, "利用シーン:" %>
-<%= f.text_area  :scene, :class => 'wd-100 he-90',:placeholder => "例）鍵を遠隔で閉めたい時に、airbnbでの利用" %>
+<%= f.text_area  :scene, :class => 'wd-100 he-90',:placeholder => "例）鍵を遠隔で閉めたい時に、airbnbでの利用",:minlength => "5" %>
 <%= f.label :detail, "仕様:" %>
-<%= f.text_area  :detail, :class => 'wd-100 he-90',:placeholder => "例）液晶サイズ：11.6インチ CPU：Pentium N3700(Braswell)/1.6GHz/4コア SSD容量：128GB メモリ容量：4GB OS：Windows 10 Home 64bit" %>
+<%= f.text_area  :detail, :class => 'wd-100 he-90',:placeholder => "例）液晶サイズ：11.6インチ CPU：Pentium N3700(Braswell)/1.6GHz/4コア SSD容量：128GB メモリ容量：4GB OS：Windows 10 Home 64bit",:minlength => "5" %>
 <%= f.label :company, "販売会社:" %>
 <%= f.text_field :company, :class => 'wd-middle',:placeholder => "例）株式会社ABC" %>
 <%= f.label :url, "WEBサイトURL:" %>

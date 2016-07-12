@@ -79,7 +79,7 @@
  <h2>レビューを書く</h2><br>
  <% if user_signed_in? %><!-- ログイン時 -->
   <% if current_user %>
-      <%= form_tag("/products/#{@product.id}/comments", method: :post) do %>
+      <%= form_tag("/products/#{@product.id}/comments",:id => 'form01', method: :post) do %>
       <label>評価: </label>
    <select name="rate">
    <option value="0">---</option>
@@ -90,7 +90,7 @@
 <option value="8">4</option>
 <option value="10">5</option>
   </select><br><br>
-        <textarea name="review" class="wd-100"  cols="40" rows="7" placeholder="例）初心者にも使いやすいです。iphoneアプリも利用可能だったので、長く使っていこうと思います。"></textarea>
+        <textarea name="review" class="wd-100"  cols="40" rows="7" placeholder="例）初心者にも使いやすいです。iphoneアプリも利用可能だったので、長く使っていこうと思います。" minlength="15"></textarea>
         <input type="submit" value="レビューを書く" class="review-write">
       <% end %>
     <% end %>

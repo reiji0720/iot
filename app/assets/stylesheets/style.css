@@ -1128,3 +1128,7 @@ width:240px !important;
 .he-90{
 height:190px;
 }
+.error{
+color:red;
+font-weight:bold;
+}

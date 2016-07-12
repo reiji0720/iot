@@ -1,7 +1,7 @@
 <div class="main-inner">
 <h2>「<%= @comment.product.title %>」へのレビューを編集する</h2><br>
  <% if current_user %>
-      <%= form_tag("/products/#{@comment.product.id}/comments/#{@comment.id}", method: :patch ) do %>
+      <%= form_tag("/products/#{@comment.product.id}/comments/#{@comment.id}", :id => 'form01',method: :patch ) do %>
 
       <label>評価: </label>
    <select name="rate">
@@ -13,7 +13,7 @@
 <option value="10"<% if(@comment.rate==10) %> selected<% end %>>5</option>
   </select>  現在の評価＝<%= @comment.rate/2 %><br><br>
 
-        <textarea cols="30" name="review" class="wd-100" placeholder="コメントする" rows="2"><%= @comment.review %></textarea>
+        <textarea cols="30" name="review" class="wd-100" placeholder="コメントする" rows="2" minlength="15"><%= @comment.review %></textarea>
         <input type="submit" value="更新する" class="review-write">
       <% end %>
     <% end %>
