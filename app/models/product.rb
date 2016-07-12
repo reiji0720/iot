@@ -5,7 +5,7 @@ class Product < ActiveRecord::Base
                                       content_type: ["image/jpg","image/jpeg","image/png"]
 
   belongs_to :user
-  has_many :comments               #commentsテーブルとのアソシエーション
+  has_many :comments, :dependent => :destroy               #commentsテーブルとのアソシエーション
   belongs_to :category
   has_many :products_tags
   has_many :tags, through: :taggings
