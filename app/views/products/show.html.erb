@@ -101,13 +101,4 @@
 
       </div><!-- main-inner -->
       <br>
-<% if user_signed_in? && @product.user_id == current_user.id %>
-<div class="main-inner">
- <h2>タグの作成</h2>
-      <label>（タグ毎にカンマ区切り）</label>
-<%= form_for @product do |f| %>
-    <%= text_field_tag 'product[iot_list]', @product.iot_list.join(',') %>
-    <%= f.submit %>
-<% end %>
-</div><!-- main-inner -->
-<% end %>
+
